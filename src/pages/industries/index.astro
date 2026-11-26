@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+import { INDUSTRIES_LIST } from '@/data/industriesData';
+---
+
+<BaseLayout
+  title={`Industries We Serve | ${SITE_CONFIG.brandName}`}
+  description="Explore the 10 global industries served by Reliable Industries. From Oil & Gas and Chemical Processing to Water Systems and Refrigeration, our mechanical seals and rotary joints deliver zero-leakage performance."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="GLOBAL APPLICATIONS & EXCELLENCE"
+      title="Engineered Sealing Solutions For 10 Major Industries"
+      subtitle="From extreme offshore hydrocarbon pressures to sterile sanitary pharmaceutical reactors, Reliable Industries manufactures heavy-duty mechanical seals and rotary unions proven in demanding industrial environments."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Industries' }]}
+      align="center"
+    />
+
+    <!-- Industries 2-Col Balanced Grid (5 x 2 = 10 Sectors) -->
+    <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="mb-[2.5rem] max-w-[780px]">
+          <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+            CATALOG OF INDUSTRIAL SECTORS
+          </span>
+          <h2 class="mb-[0.75rem] text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+            Reliable Performance Under Critical Operating Conditions
+          </h2>
+          <p class="text-[0.98rem] text-[#334155]">
+            Select an industry below to review operating parameters, recommended sealing technologies, and key equipment served.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-[1.5rem] min-[769px]:grid-cols-2">
+          {
+            INDUSTRIES_LIST.map((ind) => (
+              <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-[4px] hover:shadow-[0_12px_28px_rgba(0,43,73,0.1)]">
+                <div class="relative h-[200px] w-full overflow-hidden bg-[#003B6D] min-[577px]:h-[220px]">
+                  <Image
+                    src={ind.imageMeta}
+                    alt={ind.title}
+                    width={760}
+                    format="webp"
+                    quality={85}
+                    class="h-full w-full object-cover"
+                  />
+                  <span class="absolute top-[14px] left-[14px] rounded-[2px] bg-[#003B6D] px-[0.65rem] py-[0.25rem] text-[0.72rem] font-bold uppercase tracking-[1px] text-[#FFE600]">
+                    {ind.tag}
+                  </span>
+                </div>
+
+                <div class="flex grow flex-col p-[1.5rem] min-[577px]:p-[1.75rem]">
+                  <h3 class="mb-[0.85rem] text-[1.25rem] font-bold text-[#003B6D]">
+                    <a
+                      href={`/industries/${ind.slug}`}
+                      class="transition-colors hover:text-[#009FE3]"
+                    >
+                      {ind.title}
+                    </a>
+                  </h3>
+
+                  <blockquote class="mb-[1.25rem] border-l-4 border-[#009FE3] bg-[#F4F6F8] px-[1rem] py-[0.75rem] text-[0.9rem] leading-[1.6] text-[#334155]">
+                    &ldquo;{ind.desc}&rdquo;
+                  </blockquote>
+
+                  <div class="mb-[1.5rem] grow">
+                    <p class="mb-[0.5rem] text-[0.75rem] font-bold uppercase tracking-[1px] text-[#64748b]">
+                      Key Applications:
+                    </p>
+                    <div class="flex flex-wrap gap-[0.4rem]">
+                      {ind.keyEquipment.slice(0, 3).map((eq) => (
+                        <span class="rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] px-[0.55rem] py-[0.25rem] text-[0.78rem] font-medium text-[#334155]">
+                          {eq}
+                        </span>
+                      ))}
+                      {ind.keyEquipment.length > 3 && (
+                        <span class="px-[0.35rem] py-[0.25rem] text-[0.78rem] font-bold text-[#009FE3]">
+                          +{ind.keyEquipment.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between border-t border-[#e2e8f0] pt-[1rem]">
+                    <a
+                      href={`/industries/${ind.slug}`}
+                      class="inline-flex items-center gap-[5px] text-[0.9rem] font-semibold text-[#009FE3] transition-colors hover:text-[#003B6D]"
+                    >
+                      <span>Explore Industry Solutions</span>
+                      <ArrowRight size={15} stroke-width={2.2} aria-hidden="true" />
+                    </a>
+                    <a
+                      href={`/contact?inquiry=${encodeURIComponent(ind.title)}`}
+                      class="text-[0.85rem] font-semibold text-[#64748b] transition-colors hover:text-[#003B6D]"
+                    >
+                      Inquire
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Support Banner -->
+    <section class="bg-[#002038] py-[3.5rem] text-center text-white min-[769px]:py-[4.5rem]">
+      <div class="site-container">
+        <span class="mb-[0.65rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+          ENGINEERED APPLICATION SUPPORT
+        </span>
+        <h2 class="mb-[1rem] text-[1.75rem] font-bold leading-[1.2] text-white min-[769px]:text-[2.2rem]">
+          Don&apos;t See Your Specific Process Fluid Listed?
+        </h2>
+        <p class="mx-auto mb-[2rem] max-w-[680px] text-[1rem] leading-[1.6] text-[#cbd5e1]">
+          Our Mumbai engineering center custom designs mechanical seal faces, exotic metallurgy barriers, and specialized rotary pressure joints for one-off and extreme industrial specifications.
+        </p>
+        <div class="flex flex-wrap justify-center gap-[1rem]">
+          <a
+            href="/contact"
+            class="inline-block rounded-[4px] border-2 border-[#FFE600] bg-[#FFE600] px-[1.8rem] py-[0.75rem] text-[0.95rem] font-semibold text-[#003B6D] transition-colors duration-300 hover:border-[#E6D000] hover:bg-[#E6D000]"
+          >
+            Consult An Engineer
+          </a>
+          <a
+            href={SITE_CONFIG.brochurePath}
+            download={SITE_CONFIG.brochureDownloadName}
+            class="inline-block rounded-none border border-white/60 bg-transparent px-[1.8rem] py-[0.75rem] text-[0.95rem] font-semibold text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#003B6D]"
+          >
+            Download Catalog (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

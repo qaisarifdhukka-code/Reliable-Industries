@@ -1,0 +1,287 @@
+---
+import { getImage } from 'astro:assets';
+import { CircleCheck, FileDown, Headphones, SlidersHorizontal } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import ProductGallery, { type ProductGallerySlide } from '@/components/ProductGallery';
+import { SITE_CONFIG } from '@/config/site';
+import {
+  CATALOG_PRODUCTS,
+  getGalleryImageMetas,
+  getRelatedProducts,
+  normalizeSpecEntries,
+  SUBCATEGORY_GROUPS,
+  type CatalogProduct,
+} from '@/data/catalog';
+
+export function getStaticPaths() {
+  return CATALOG_PRODUCTS.map((product) => ({
+    params: { category: product.categorySlug, slug: product.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: CatalogProduct;
+}
+
+const { product } = Astro.props;
+
+const rawGallery = getGalleryImageMetas(product);
+const gallerySlides: ProductGallerySlide[] = await Promise.all(
+  rawGallery.map(async (item) => {
+    const optimized = await getImage({
+      src: item.image,
+      width: 900,
+      format: 'webp',
+      quality: 85,
+    });
+    return {
+      src: optimized.src,
+      alt: `${product.name} - ${item.label}`,
+      label: item.label,
+      type: item.type,
+    };
+  })
+);
+
+const activeSubGroup = SUBCATEGORY_GROUPS.find(
+  (g) => g.match(product) || g.slug === product.categorySlug
+);
+const sidebarTitle = activeSubGroup?.title ?? product.category;
+const relatedProducts = getRelatedProducts(product);
+const specEntries = normalizeSpecEntries(product.specs);
+---
+
+<BaseLayout
+  title={`${product.name} | ${SITE_CONFIG.brandName}`}
+  description={product.description}
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker={product.category}
+      title={product.name}
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Products', href: '/products' },
+        { label: product.category, href: `/products/${product.categorySlug}` },
+        { label: product.shortName },
+      ]}
+    />
+
+    <section class="bg-[#F4F6F8] py-[2.5rem] min-[769px]:py-[4rem]">
+      <div class="site-container grid grid-cols-1 items-start gap-[2rem] min-[961px]:grid-cols-[300px_1fr] min-[1201px]:gap-[2.5rem]">
+        <!-- Sidebar (stacks cleanly below details on narrow screens) -->
+        <aside class="order-2 space-y-[1.5rem] min-[961px]:order-1">
+          <!-- Related Models in Same Subcategory -->
+          <div class="rounded-[2px] border border-[#e2e8f0] border-t-4 border-t-[#009FE3] bg-white p-[1.25rem]">
+            <div class="mb-[1rem] flex items-center justify-between border-b border-[#e2e8f0] pb-[0.75rem]">
+              <h2 class="text-[1rem] font-bold text-[#003B6D]">
+                {sidebarTitle}
+              </h2>
+              <span class="rounded-[2px] bg-[#F4F6F8] px-[0.5rem] py-[0.15rem] text-[0.72rem] font-bold text-[#009FE3]">
+                {relatedProducts.length}{' '}
+                {relatedProducts.length === 1 ? 'Model' : 'Models'}
+              </span>
+            </div>
+
+            <div class="space-y-[0.65rem]">
+              {
+                relatedProducts.map((sibling) => {
+                  const isCurrent = sibling.slug === product.slug;
+                  return (
+                    <a
+                      href={`/products/${sibling.categorySlug}/${sibling.slug}`}
+                      aria-current={isCurrent ? 'page' : undefined}
+                      class:list={[
+                        'block rounded-[2px] border p-[0.75rem] transition-colors duration-200',
+                        isCurrent
+                          ? 'border-[#009FE3] bg-[#009FE3] text-white'
+                          : 'border-[#e2e8f0] bg-[#F4F6F8] text-[#003B6D] hover:border-[#009FE3] hover:bg-white',
+                      ]}
+                    >
+                      <div class="flex items-center justify-between gap-2">
+                        <span class="text-[0.84rem] font-bold leading-[1.3]">
+                          {sibling.shortName}
+                        </span>
+                        {isCurrent && (
+                          <CircleCheck
+                            size={15}
+                            stroke-width={2.2}
+                            class="shrink-0 text-white"
+                            aria-hidden="true"
+                          />
+                        )}
+                      </div>
+
+                      {sibling.badgeSpecs.length > 0 && (
+                        <div class="mt-[0.45rem] flex flex-wrap gap-[0.35rem]">
+                          {sibling.badgeSpecs.map((spec) => (
+                            <span
+                              class:list={[
+                                'rounded-[2px] px-[0.45rem] py-[0.15rem] text-[0.68rem] font-medium',
+                                isCurrent
+                                  ? 'bg-white/20 text-white'
+                                  : 'border border-[#e2e8f0] bg-white text-[#334155]',
+                              ]}
+                            >
+                              <strong
+                                class={
+                                  isCurrent ? 'text-white' : 'text-[#64748b]'
+                                }
+                              >
+                                {spec.label}:
+                              </strong>{' '}
+                              {spec.value}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </a>
+                  );
+                })
+              }
+            </div>
+          </div>
+
+          <!-- Brochure Card -->
+          <div class="rounded-[2px] border border-[#e2e8f0] bg-white p-[1.5rem] text-center">
+            <FileDown
+              size={30}
+              stroke-width={1.8}
+              class="mx-auto mb-[0.75rem] text-[#009FE3]"
+              aria-hidden="true"
+            />
+            <h3 class="mb-[0.45rem] text-[1.1rem] font-bold text-[#003B6D]">
+              Product Brochure
+            </h3>
+            <p class="mb-[1.15rem] text-[0.88rem] text-[#64748b]">
+              Download full technical specifications and dimensions.
+            </p>
+            <a
+              href={SITE_CONFIG.brochurePath}
+              download={SITE_CONFIG.brochureDownloadName}
+              class="block w-full rounded-[4px] bg-[#003B6D] px-[1rem] py-[0.7rem] text-[0.9rem] font-semibold text-white transition-colors duration-200 hover:bg-[#009FE3]"
+            >
+              Download PDF
+            </a>
+          </div>
+
+          <!-- Engineering Helpline Card -->
+          <div class="rounded-[2px] bg-[#003B6D] p-[1.5rem] text-center text-white">
+            <Headphones
+              size={32}
+              stroke-width={1.8}
+              class="mx-auto mb-[0.85rem] text-[#009FE3]"
+              aria-hidden="true"
+            />
+            <h3 class="mb-[0.5rem] text-[1.2rem] font-bold text-white">
+              Need Technical Support?
+            </h3>
+            <p class="mb-[1.25rem] text-[0.9rem] text-[#cbd5e1]">
+              Contact our engineering team for custom sealing solutions.
+            </p>
+            <a
+              href={`tel:${SITE_CONFIG.businessDetails.phones[0].replace(/[^+\d]/g, '')}`}
+              class="block w-full rounded-[4px] border-2 border-[#FFE600] bg-[#FFE600] px-[1rem] py-[0.7rem] text-[0.92rem] font-bold text-[#003B6D] transition-colors duration-200 hover:border-[#E6D000] hover:bg-[#E6D000]"
+            >
+              {SITE_CONFIG.businessDetails.phones[0]}
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Product Specification Panel -->
+        <article class="order-1 rounded-[2px] border border-[#e2e8f0] bg-white p-[1.5rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)] min-[769px]:p-[2.25rem] min-[961px]:order-2">
+          <ProductGallery client:visible slides={gallerySlides} />
+
+          <div class="mb-[2rem]">
+            <h2 class="mb-[0.75rem] text-[1.5rem] font-bold text-[#003B6D]">
+              Overview
+            </h2>
+            <p class="text-[0.98rem] leading-[1.75] text-[#334155]">
+              {product.description}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-[2rem] min-[769px]:grid-cols-2">
+            <!-- Key Features -->
+            <div>
+              <h3 class="mb-[1rem] flex items-center gap-[8px] text-[1.2rem] font-bold text-[#003B6D]">
+                <CircleCheck
+                  size={20}
+                  stroke-width={2}
+                  class="text-[#009FE3]"
+                  aria-hidden="true"
+                />
+                <span>Key Features</span>
+              </h3>
+              <ul class="space-y-[0.65rem]">
+                {
+                  product.features.map((feat) => (
+                    <li class="flex items-start gap-[0.65rem] rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] px-[0.9rem] py-[0.75rem] text-[0.9rem] leading-[1.5] text-[#334155]">
+                      <CircleCheck
+                        size={16}
+                        stroke-width={2}
+                        class="mt-[3px] shrink-0 text-[#009FE3]"
+                        aria-hidden="true"
+                      />
+                      <span>{feat}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <!-- Technical Specs -->
+            <div>
+              <h3 class="mb-[1rem] flex items-center gap-[8px] text-[1.2rem] font-bold text-[#003B6D]">
+                <SlidersHorizontal
+                  size={20}
+                  stroke-width={2}
+                  class="text-[#009FE3]"
+                  aria-hidden="true"
+                />
+                <span>Technical Specs</span>
+              </h3>
+              <div class="overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8]">
+                <dl class="divide-y divide-[#e2e8f0]">
+                  {
+                    specEntries.map(([label, value]) => (
+                      <div class="flex items-baseline justify-between gap-[1rem] px-[1rem] py-[0.75rem] text-[0.9rem]">
+                        <dt class="font-bold text-[#003B6D]">{label}</dt>
+                        <dd class="text-right font-medium text-[#334155]">
+                          {value}
+                        </dd>
+                      </div>
+                    ))
+                  }
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-[2.25rem] flex flex-wrap gap-[0.85rem] border-t border-[#e2e8f0] pt-[1.5rem]">
+            <a
+              href={`/contact?inquiry=${encodeURIComponent(product.name)}`}
+              class="inline-block rounded-[4px] border-2 border-[#009FE3] bg-[#009FE3] px-[1.6rem] py-[0.75rem] text-[0.92rem] font-semibold text-white transition-colors duration-200 hover:border-[#007BB5] hover:bg-[#007BB5]"
+            >
+              Request Quote for This Model
+            </a>
+            <a
+              href={`/products/${product.categorySlug}`}
+              class="inline-block rounded-none border border-[#003B6D] bg-transparent px-[1.5rem] py-[0.75rem] text-[0.92rem] font-semibold text-[#003B6D] transition-colors duration-200 hover:bg-[#003B6D] hover:text-white"
+            >
+              View All {product.category}
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

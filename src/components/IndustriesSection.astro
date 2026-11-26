@@ -1,0 +1,123 @@
+---
+import { getImage } from 'astro:assets';
+import IndustriesCarousel, { type IndustryItem } from '@/components/IndustriesCarousel';
+import industrialImg from '@/assets/images/hero_industrial_1790081823152.jpg';
+import chemicalImg from '@/assets/images/industry_chemical.jpg';
+import pharmaImg from '@/assets/images/hero_pharma_light.jpg';
+import missionImg from '@/assets/images/mission_hero_bg.jpg';
+import energyImg from '@/assets/images/industry_energy_1790083113983.jpg';
+import industrialNewImg from '@/assets/images/hero_industrial_new.jpg';
+import cadImg from '@/assets/images/engineering_cad.jpg';
+import rotaryHeroImg from '@/assets/images/hero_rotary_joint_product.jpg';
+
+const [
+  optIndustrial,
+  optChemical,
+  optPharma,
+  optMission,
+  optEnergy,
+  optIndustrialNew,
+  optCad,
+  optRotaryHero,
+] = await Promise.all([
+  getImage({ src: industrialImg, format: 'webp', quality: 85 }),
+  getImage({ src: chemicalImg, format: 'webp', quality: 85 }),
+  getImage({ src: pharmaImg, format: 'webp', quality: 85 }),
+  getImage({ src: missionImg, format: 'webp', quality: 85 }),
+  getImage({ src: energyImg, format: 'webp', quality: 85 }),
+  getImage({ src: industrialNewImg, format: 'webp', quality: 85 }),
+  getImage({ src: cadImg, format: 'webp', quality: 85 }),
+  getImage({ src: rotaryHeroImg, format: 'webp', quality: 85 }),
+]);
+
+const industriesData: IndustryItem[] = [
+  {
+    id: 'oil-and-gas',
+    title: 'Oil & Gas Industry',
+    desc: 'Oil Refineries & Gas industries choose Reliable seals for their most difficult application for improving financial performance. Our product proved significant performance all the time.',
+    imageSrc: optIndustrial.src,
+    href: '/industries/oil-and-gas',
+  },
+  {
+    id: 'chemical-process',
+    title: 'Chemical Process Industry',
+    desc: "The chemical processing industry's focus on environmental pollution control and significant improvement and life of their equipment. Reliable Ind. products prove high performance of sealing product and fulfill the correct requirement of this industry.",
+    imageSrc: optChemical.src,
+    href: '/industries/chemical-process',
+  },
+  {
+    id: 'pharmaceutical',
+    title: 'Pharmaceutical Industry',
+    desc: 'Pharmaceutical Industries focus on cleanness environment pollution control & public health. Reliable seals for Pump & Reactor provide high performance of equipment and solution for their critical application.',
+    imageSrc: optPharma.src,
+    href: '/industries/pharmaceutical',
+  },
+  {
+    id: 'pulp-and-paper',
+    title: 'Pulp & Paper Industry',
+    desc: 'This industry focuses on environment pollution control and minimizing water consumption for their equipment. Reliable Industries seals prove excellent performance.',
+    imageSrc: optMission.src,
+    href: '/industries/pulp-and-paper',
+  },
+  {
+    id: 'power-generation',
+    title: 'Power Generation Industry',
+    desc: 'Reliable Industries designed & developed excellent seals for nuclear, fossil, and fuel plants, for handling boiler feed water, fine gas & slurry applications.',
+    imageSrc: optEnergy.src,
+    href: '/industries/power-generation',
+  },
+  {
+    id: 'mining-and-minerals',
+    title: 'Mining & Minerals Industry',
+    desc: 'This industry focuses on environmental control for handling slurry or abrasive products. Reliable Industries designed & developed relevant seals to provide excellent performance.',
+    imageSrc: optIndustrialNew.src,
+    href: '/industries/mining-and-minerals',
+  },
+  {
+    id: 'food-and-beverage',
+    title: 'Food & Beverage Industry',
+    desc: 'Food & Beverage industries focus on environmental pollution control, public health, and cleanliness. Reliable Industries provides food grade approved seals to fulfill their commitment.',
+    imageSrc: optPharma.src,
+    href: '/industries/food-and-beverage',
+  },
+  {
+    id: 'water-systems',
+    title: 'Water Systems',
+    desc: 'Since the early introduction of elastomer bellow mechanical seals, Reliable has designed & developed mechanical seals for residential, commercial, industrial, and agricultural water pumps to handle higher pressures, corrosion, and abrasion.',
+    imageSrc: optIndustrial.src,
+    href: '/industries/water-systems',
+  },
+  {
+    id: 'refrigeration-compressors',
+    title: 'Refrigeration Compressors',
+    desc: 'Reliable pioneered the development of metal bellows seals for refrigeration compressors to meet the demand imposed by new refrigerants and strict leakage controls on ozone-depleting gases.',
+    imageSrc: optCad.src,
+    href: '/industries/refrigeration-compressors',
+  },
+  {
+    id: 'textile',
+    title: 'Textile Industry',
+    desc: 'This industry focuses on environmental pollution control, cleanliness & public health. Reliable Industries has designed & developed effective sealing systems to prove excellent performance.',
+    imageSrc: optRotaryHero.src,
+    href: '/industries/textile',
+  },
+];
+---
+
+<section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[6rem]">
+  <div class="site-container">
+    <div class="mb-[2.5rem] min-[769px]:mb-[3rem]">
+      <span class="mb-[1rem] block text-[0.85rem] font-bold uppercase tracking-[1px] text-[#003B6D]">
+        INDUSTRIES
+      </span>
+      <h2 class="mb-[1rem] max-w-[600px] text-[1.85rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.5rem]">
+        Diverse solutions for numerous industries
+      </h2>
+      <p class="mb-[2.5rem] max-w-[800px] text-[1rem] text-[#334155] min-[769px]:mb-[3rem] min-[769px]:text-[1.1rem]">
+        Every industry has its special requirements. Reliable Industries is an internationally leading system provider of sealing technology. Our products and solutions are used successfully around the world.
+      </p>
+    </div>
+
+    <IndustriesCarousel client:visible industries={industriesData} />
+  </div>
+</section>

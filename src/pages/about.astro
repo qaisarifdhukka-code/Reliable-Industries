@@ -1,0 +1,224 @@
+---
+import { Image } from 'astro:assets';
+import { Cpu, Globe, ShieldCheck } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+import cncPlantImg from '@/assets/images/hero_industrial_new.jpg';
+---
+
+<BaseLayout
+  title={`About Us | ${SITE_CONFIG.brandName} - Pioneer in Sealing Technology`}
+  description="Learn about Reliable Industries - 38+ years of engineering excellence, manufacturing heavy-duty mechanical seals, cartridge systems, and sealing support units worldwide."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="OUR STORY & LEGACY"
+      title="Pioneering Sealing Technology For Over Three Decades"
+      subtitle="From precision engineering to mission-critical zero-leakage systems, Reliable Industries manufactures high-performance mechanical seals trusted by heavy process industries across 50+ countries."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+      align="center"
+    />
+
+    <!-- Story & Vision Split -->
+    <section class="bg-white py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container grid grid-cols-1 items-center gap-[2.5rem] min-[961px]:grid-cols-2 min-[1201px]:gap-[3.5rem]">
+        <div>
+          <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+            WHO WE ARE
+          </span>
+          <h2 class="mb-[1.25rem] text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+            Precision Engineered For Extreme Industrial Demands
+          </h2>
+          <p class="mb-[1rem] text-[1rem] leading-[1.7] text-[#334155]">
+            With roots dating back to <strong class="text-[#003B6D]">1987</strong> as Reliable Engineering Works before transitioning to <strong class="text-[#003B6D]">Reliable Industries</strong> in <strong class="text-[#003B6D]">2005</strong>, we have grown into an internationally recognized designer and manufacturer of mechanical seals, standard cartridge systems, rotary joints, and auxiliary seal support systems.
+          </p>
+          <p class="mb-[1.75rem] text-[1rem] leading-[1.7] text-[#334155]">
+            Operating across <strong class="text-[#003B6D]">6,400 sq. ft.</strong> (2,900 + 3,500 sq. ft.) in Mumbai, our facility incorporates multi-axis CNC turning centers, precision lapping rigs, flatness testing benches, and grinding equipment built for ISO 9001:2015, API 682, ATEX, and FDA standards.
+          </p>
+
+          <div class="grid grid-cols-3 gap-[1rem] border-t border-[#e2e8f0] pt-[1.5rem]">
+            <div>
+              <div class="text-[1.75rem] font-extrabold text-[#009FE3] min-[577px]:text-[2.1rem]">
+                1987
+              </div>
+              <div class="text-[0.82rem] font-semibold text-[#64748b]">
+                Engineering Legacy Founded
+              </div>
+            </div>
+            <div>
+              <div class="text-[1.75rem] font-extrabold text-[#009FE3] min-[577px]:text-[2.1rem]">
+                30
+              </div>
+              <div class="text-[0.82rem] font-semibold text-[#64748b]">
+                Dedicated Personnel
+              </div>
+            </div>
+            <div>
+              <div class="text-[1.75rem] font-extrabold text-[#009FE3] min-[577px]:text-[2.1rem]">
+                46+
+              </div>
+              <div class="text-[0.82rem] font-semibold text-[#64748b]">
+                Seal Models Manufactured
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-[2px] border border-[#e2e8f0] shadow-[0_8px_28px_rgba(0,43,73,0.1)]">
+          <Image
+            src={cncPlantImg}
+            alt="Reliable Industries CNC Manufacturing Plant"
+            width={800}
+            format="webp"
+            quality={85}
+            class="h-auto w-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Guiding Pillars -->
+    <section class="border-t border-[#e2e8f0] bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="mb-[2.5rem] max-w-[700px]">
+          <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+            OUR GUIDING PILLARS
+          </span>
+          <h2 class="text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+            Engineered For Absolute Reliability
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-[1.5rem] min-[769px]:grid-cols-3">
+          <article class="rounded-[2px] border border-[#e2e8f0] border-t-4 border-t-[#009FE3] bg-white p-[1.75rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)]">
+            <ShieldCheck size={32} stroke-width={1.8} class="mb-[1rem] text-[#009FE3]" aria-hidden="true" />
+            <h3 class="mb-[0.65rem] text-[1.2rem] font-bold text-[#003B6D]">
+              Uncompromising Quality
+            </h3>
+            <p class="text-[0.94rem] leading-[1.65] text-[#334155]">
+              Every seal undergoes dimensional CMM verification and hydrostatic leak testing to guarantee zero-defect field installation.
+            </p>
+          </article>
+
+          <article class="rounded-[2px] border border-[#e2e8f0] border-t-4 border-t-[#003B6D] bg-white p-[1.75rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)]">
+            <Cpu size={32} stroke-width={1.8} class="mb-[1rem] text-[#009FE3]" aria-hidden="true" />
+            <h3 class="mb-[0.65rem] text-[1.2rem] font-bold text-[#003B6D]">
+              Continuous Innovation
+            </h3>
+            <p class="text-[0.94rem] leading-[1.65] text-[#334155]">
+              Our in-house R&amp;D and FEA computational simulations engineer custom seal geometries that conquer corrosive and extreme thermal fluids.
+            </p>
+          </article>
+
+          <article class="rounded-[2px] border border-[#e2e8f0] border-t-4 border-t-[#009FE3] bg-white p-[1.75rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)]">
+            <Globe size={32} stroke-width={1.8} class="mb-[1rem] text-[#009FE3]" aria-hidden="true" />
+            <h3 class="mb-[0.65rem] text-[1.2rem] font-bold text-[#003B6D]">
+              Global Client Commitment
+            </h3>
+            <p class="text-[0.94rem] leading-[1.65] text-[#334155]">
+              Rapid technical dispatch, direct engineering consulting, and dedicated plant turnaround support anywhere across the globe.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Facts & Equipment -->
+    <section class="border-t border-[#e2e8f0] bg-white py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="grid grid-cols-1 gap-[3rem] min-[1025px]:grid-cols-2">
+
+          <!-- Left: Company Quick Facts -->
+          <div>
+            <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+              COMPANY PROFILE
+            </span>
+            <h2 class="mb-[1.5rem] text-[1.6rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[1.9rem]">
+              Reliable Industries At A Glance
+            </h2>
+            <dl class="divide-y divide-[#e2e8f0] rounded-[2px] border border-[#e2e8f0]">
+              {[
+                { label: 'Company Name', value: 'Reliable Industries' },
+                { label: 'Original Establishment', value: 'Reliable Engineering Works (1987 – 2005)' },
+                { label: 'Transitioned to Reliable Ind.', value: '2005' },
+                { label: 'Factory Area', value: '6,400 sq. ft. (2,900 + 3,500 sq. ft.)' },
+                { label: 'Total Workforce', value: '30 Personnel' },
+                { label: 'Skilled Engineers & Machinists', value: '10' },
+                { label: 'Semi-Skilled Technicians', value: '5' },
+                { label: 'Service Staff', value: '4' },
+                { label: 'Production & Marketing', value: '4' },
+                { label: 'Quality Control (Q.C.)', value: '3' },
+                { label: 'Dispatch & Logistics', value: '4' },
+              ].map((row) => (
+                <div class="flex flex-wrap gap-x-[1rem] gap-y-[0.2rem] px-[1.25rem] py-[0.85rem]">
+                  <dt class="w-[210px] shrink-0 text-[0.88rem] font-semibold text-[#003B6D]">
+                    {row.label}
+                  </dt>
+                  <dd class="text-[0.88rem] text-[#334155]">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <!-- Right: Manufacturing Equipment -->
+          <div>
+            <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+              MANUFACTURING CAPABILITY
+            </span>
+            <h2 class="mb-[1.5rem] text-[1.6rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[1.9rem]">
+              State-of-the-Art Factory Equipment
+            </h2>
+            <ul class="divide-y divide-[#e2e8f0] rounded-[2px] border border-[#e2e8f0]">
+              {[
+                { machine: 'Lathe Machine', qty: '15 No.' },
+                { machine: 'Lapping Machine', qty: '2 No.' },
+                { machine: 'Roll & Grinder', qty: '1 No.' },
+                { machine: 'Grinder', qty: '2 No.' },
+                { machine: 'Drill Machine', qty: '2 No.' },
+                { machine: 'Band Saw / Hacksaw Machine', qty: '1 No.' },
+                { machine: 'Hydraulic Press', qty: '1 No.' },
+                { machine: 'Punching M/c', qty: '1 No.' },
+                { machine: 'Flatness Testing M/c', qty: '1 No.' },
+                { machine: 'CNC Lathe M/c', qty: '2 No.' },
+                { machine: 'VMC / Milling', qty: '1 No.' },
+              ].map((item) => (
+                <li class="flex items-center justify-between gap-[1rem] px-[1.25rem] py-[0.75rem]">
+                  <span class="text-[0.88rem] text-[#334155]">{item.machine}</span>
+                  <span class="shrink-0 rounded-[2px] bg-[#003B6D] px-[0.65rem] py-[0.2rem] text-[0.78rem] font-bold text-white">
+                    {item.qty}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bg-[#002038] py-[3.5rem] text-center text-white min-[769px]:py-[4.5rem]">
+      <div class="site-container">
+        <h2 class="mb-[0.75rem] text-[1.75rem] font-bold text-white min-[769px]:text-[2rem]">
+          Have A Complex Sealing Challenge?
+        </h2>
+        <p class="mx-auto mb-[1.75rem] max-w-[600px] text-[1rem] text-[#cbd5e1]">
+          Speak directly with our senior application engineering team for customized solutions.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block rounded-[4px] border-2 border-[#009FE3] bg-[#009FE3] px-[2rem] py-[0.8rem] text-[0.95rem] font-semibold text-white transition-colors duration-300 hover:border-[#007BB5] hover:bg-[#007BB5]"
+        >
+          Contact An Expert
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

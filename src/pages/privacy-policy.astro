@@ -1,0 +1,40 @@
+---
+import LegalDocument from '@/components/LegalDocument.astro';
+import { SITE_CONFIG } from '@/config/site';
+
+const sections = [
+  {
+    heading: '1. Information We Collect',
+    body: 'When you request a quotation, submit a technical inquiry, download product catalogs, or reach out to Reliable Industries via our web forms, phone, or email, we collect relevant business details including your name, corporate email address, contact telephone, company name, and technical operating requirements.',
+  },
+  {
+    heading: '2. How We Use Your Data',
+    body: 'We use your contact and technical parameters solely to:',
+    bullets: [
+      'Process technical inquiries, seal selection consultations, and commercial RFQs.',
+      'Coordinate shipment tracking, logistics, and dispatch documentation.',
+      'Provide customer technical support and post-installation service bulletins.',
+      'Comply with export compliance, statutory auditing, and legal obligations.',
+    ],
+  },
+  {
+    heading: '3. Data Security & Confidentiality',
+    body: 'Reliable Industries does not sell, lease, or share your proprietary technical drawings or contact information with third-party advertisers. All data is stored on secure, encrypted enterprise servers with strict role-based access.',
+  },
+  {
+    heading: '4. Contact Regarding Data Rights',
+    body: 'If you wish to view, modify, or request deletion of your contact records, please contact our Compliance Officer via email below.',
+  },
+];
+---
+
+<LegalDocument
+  seoTitle={`Privacy Policy | ${SITE_CONFIG.brandName}`}
+  seoDescription="Read Reliable Industries' Privacy Policy detailing how we safeguard your personal data, technical inquiries, and communications."
+  kicker="DATA PRIVACY & PROTECTION"
+  pageTitle="Privacy Policy"
+  subtitle="We are committed to maintaining the highest confidentiality and security for all business inquiries and customer data."
+  breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
+  sections={sections}
+  footerNoticeHtml={`<strong>Last Updated:</strong> October 2026 &bull; Reliable Industries Compliance Department &mdash; <a href="mailto:${SITE_CONFIG.businessDetails.departmentEmails.privacy}" class="font-semibold text-[#009FE3] hover:text-[#003B6D]">${SITE_CONFIG.businessDetails.departmentEmails.privacy}</a>`}
+/>

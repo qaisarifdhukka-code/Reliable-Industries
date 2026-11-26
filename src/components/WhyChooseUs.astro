@@ -1,0 +1,99 @@
+---
+interface WhyItem {
+  title: string;
+  description: string;
+}
+
+const whyItems: WhyItem[] = [
+  {
+    title: 'Specialist',
+    description:
+      'Expert technical advice tailored to your specific application requirements.',
+  },
+  {
+    title: 'Reliable',
+    description:
+      'Dependable products and services that ensure continuous operation.',
+  },
+  {
+    title: 'Fast',
+    description:
+      'Quick turnaround times to minimize your system downtime.',
+  },
+  {
+    title: 'Global',
+    description:
+      'Worldwide support network ready to assist wherever you are.',
+  },
+];
+---
+
+<section class="bg-white py-[3rem] min-[769px]:py-[4rem]">
+  <div class="site-container flex flex-col gap-[2.5rem] min-[961px]:flex-row min-[961px]:items-start min-[961px]:gap-[4rem]">
+    <!-- Left Main Content -->
+    <div class="min-[961px]:flex-[2]">
+      <h2 class="mb-[1.5rem] text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+        Comprehensive seal service for industrial facilities
+      </h2>
+      <p class="mb-[1.5rem] max-w-[800px] text-[1.05rem] text-[#334155]">
+        Production systems need to work safely, reliably, and with maximum cost-effectiveness. So it is good to have access to an expert and efficient partner. With Reliable Industries, we offer customized service programs and flexible service for seals and gaskets. The service portfolio extends from consulting and engineering to individually-tailored service contracts.
+      </p>
+
+      <h3 class="mb-[2rem] text-[1.25rem] font-bold text-[#003B6D] min-[769px]:text-[1.4rem]">
+        This makes Reliable Industries unique:
+      </h3>
+
+      <div class="grid grid-cols-1 gap-[1.5rem] min-[577px]:grid-cols-2">
+        {
+          whyItems.map((item) => (
+            <div class="p-0">
+              <div class="mb-[0.5rem] flex items-center">
+                <span
+                  aria-hidden="true"
+                  class="relative mr-[1rem] inline-block h-[24px] w-[24px] shrink-0 rounded-full bg-[#009FE3] after:absolute after:top-[5px] after:left-[8px] after:h-[10px] after:w-[5px] after:rotate-45 after:border-r-[2px] after:border-b-[2px] after:border-white after:content-['']"
+                />
+                <span class="grow text-[1.1rem] font-bold text-[#003B6D]">
+                  {item.title}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="text-[1.2rem] font-bold text-[#009FE3]"
+                >
+                  &#8594;
+                </span>
+              </div>
+              <p class="max-w-[600px] pl-[2.5rem] text-[0.95rem] text-[#334155]">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Right Contact Card -->
+    <div class="relative w-full min-[961px]:flex-[1]">
+      <div class="relative overflow-hidden rounded-[4px] bg-white px-[1.5rem] py-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.08)] min-[577px]:px-[2.5rem] min-[577px]:py-[3rem]">
+        <div
+          aria-hidden="true"
+          class="absolute -top-[30px] -right-[30px] h-[100px] w-[100px] rounded-full bg-[linear-gradient(135deg,#009FE3_0%,transparent_100%)] opacity-80"
+        />
+        <span class="mb-[1rem] block text-[0.8rem] font-bold uppercase tracking-[1.5px] text-[#94A3B8]">
+          CONTACT
+        </span>
+        <h3 class="mb-[1.5rem] text-[1.5rem] font-bold leading-[1.2] text-[#003B6D] min-[577px]:text-[1.8rem]">
+          We are happy to advise you
+        </h3>
+        <p class="mb-[2rem] text-[0.95rem] text-[#334155]">
+          Would you like personal advice, do you have any questions or would you like to order directly? We look forward to supporting you.
+        </p>
+        <a
+          href="/contact"
+          class="block w-full cursor-pointer rounded-[4px] border-2 border-[#009FE3] bg-[#009FE3] px-[1.8rem] py-[0.8rem] text-center text-[0.95rem] font-semibold text-white transition-all duration-300 hover:border-[#007BB5] hover:bg-[#007BB5]"
+        >
+          Contact an expert
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

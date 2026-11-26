@@ -1,0 +1,196 @@
+---
+import { Mail, MapPin, Phone } from '@lucide/astro';
+import { SITE_CONFIG } from '@/config/site';
+
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+const productLinks: FooterLink[] = [
+  { label: 'Single Spring Seals', href: '/products/single-spring-series-seal' },
+  { label: 'Multi Spring Seals', href: '/products/multi-spring-series-seal' },
+  { label: 'Cartridge Seals', href: '/products/cartridge-seal' },
+  { label: 'Agitator Seals', href: '/products/agitator-seal/agitator-seal-2' },
+  { label: 'Rotary Joints', href: '/products/water-rotary-joints' },
+  { label: 'Supply Systems', href: '/products/thermosyphon/thermosyphon-3' },
+];
+
+const industryLinks: FooterLink[] = [
+  { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
+  { label: 'Chemical Processing', href: '/industries/chemical-process' },
+  { label: 'Pharmaceutical', href: '/industries/pharmaceutical' },
+  { label: 'Power Generation', href: '/industries/power-generation' },
+  { label: 'Water Systems', href: '/industries/water-systems' },
+  { label: 'Mining & Minerals', href: '/industries/mining-and-minerals' },
+];
+
+const quickLinks: FooterLink[] = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Management Team', href: '/management-team' },
+  { label: 'Certifications', href: '/certifications' },
+  { label: 'News & Press', href: '/news-press' },
+  { label: 'Events & Trade Fairs', href: '/events-trade-fairs' },
+  { label: 'Contact & Support', href: '/contact' },
+];
+
+const legalLinks: FooterLink[] = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms & Conditions', href: '/terms-conditions' },
+  { label: 'Shipping Policy', href: '/shipping-policy' },
+  { label: 'Disclaimer', href: '/disclaimer' },
+];
+---
+
+<footer class="bg-[#003B6D] pt-[3.5rem] text-white min-[769px]:pt-[5rem]">
+  <div class="site-container mb-[3rem] grid grid-cols-1 gap-[2rem] min-[769px]:mb-[3rem] min-[769px]:grid-cols-2 min-[769px]:gap-[2.5rem] min-[1025px]:mb-[4rem] min-[1025px]:grid-cols-[2fr_1fr_1fr_1.5fr] min-[1025px]:gap-[3rem]">
+    <!-- Brand Column -->
+    <div>
+      <div class="w-fit">
+        <span class="block font-serif text-[1.65rem] font-bold italic leading-[1.05] text-white">
+          {SITE_CONFIG.brandFirst}
+        </span>
+        <span class="block font-serif text-[1.65rem] font-bold italic leading-[1.05] text-white">
+          {SITE_CONFIG.brandSecond}
+        </span>
+        <span class="mt-[6px] block border-t border-white/25 pt-[4px] font-serif text-[0.68rem] font-bold leading-[1.25] text-[#cbd5e1]">
+          <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline1}</span>
+          <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline2}</span>
+        </span>
+      </div>
+      <p class="my-[1.5rem] text-[0.95rem] text-[#cbd5e1]">
+        Leading the way in advanced sealing technology for a sustainable future.
+      </p>
+
+      <div class="mt-[1.5rem] space-y-[0.75rem] border-t border-white/10 pt-[1.25rem] text-[0.88rem] text-[#cbd5e1]">
+        <div class="flex items-start gap-[0.6rem]">
+          <MapPin size={15} stroke-width={2} class="mt-[3px] shrink-0 text-[#009FE3]" aria-hidden="true" />
+          <span>
+            {
+              SITE_CONFIG.businessDetails.addressLines.map((line, idx) => (
+                <Fragment>
+                  {line}
+                  {idx < SITE_CONFIG.businessDetails.addressLines.length - 1 && <br />}
+                </Fragment>
+              ))
+            }
+          </span>
+        </div>
+        <div class="flex items-center gap-[0.6rem]">
+          <Mail size={15} stroke-width={2} class="shrink-0 text-[#009FE3]" aria-hidden="true" />
+          <a
+            href={`mailto:${SITE_CONFIG.businessDetails.email}`}
+            class="transition-colors duration-300 hover:text-[#009FE3]"
+          >
+            {SITE_CONFIG.businessDetails.email}
+          </a>
+        </div>
+        <div class="flex items-start gap-[0.6rem]">
+          <Phone size={15} stroke-width={2} class="mt-[3px] shrink-0 text-[#009FE3]" aria-hidden="true" />
+          <div class="flex flex-col gap-[2px]">
+            {
+              SITE_CONFIG.businessDetails.phones.map((phone) => (
+                <a
+                  href={`tel:${phone.replace(/[^+\d]/g, '')}`}
+                  class="transition-colors duration-300 hover:text-[#009FE3]"
+                >
+                  {phone}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products & Solutions -->
+    <div>
+      <h2 class="relative mb-[1.5rem] pb-[0.5rem] text-[1.1rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-[30px] after:bg-[#009FE3] after:content-['']">
+        Products &amp; Solutions
+      </h2>
+      <ul>
+        {
+          productLinks.map((link) => (
+            <li class="mb-[0.75rem]">
+              <a
+                href={link.href}
+                class="text-[0.95rem] text-[#cbd5e1] transition-colors duration-300 hover:text-[#009FE3]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Industries -->
+    <div>
+      <h2 class="relative mb-[1.5rem] pb-[0.5rem] text-[1.1rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-[30px] after:bg-[#009FE3] after:content-['']">
+        Industries
+      </h2>
+      <ul>
+        {
+          industryLinks.map((link) => (
+            <li class="mb-[0.75rem]">
+              <a
+                href={link.href}
+                class="text-[0.95rem] text-[#cbd5e1] transition-colors duration-300 hover:text-[#009FE3]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h2 class="relative mb-[1.5rem] pb-[0.5rem] text-[1.1rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-[30px] after:bg-[#009FE3] after:content-['']">
+        Quick Links
+      </h2>
+      <ul>
+        {
+          quickLinks.map((link) => (
+            <li class="mb-[0.75rem]">
+              <a
+                href={link.href}
+                class="text-[0.95rem] text-[#cbd5e1] transition-colors duration-300 hover:text-[#009FE3]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href="/contact"
+        class="mt-[15px] inline-block cursor-pointer rounded-[4px] border-2 border-[#009FE3] bg-[#009FE3] px-[1.8rem] py-[0.8rem] text-center text-[0.95rem] font-semibold text-white transition-all duration-300 hover:border-[#007BB5] hover:bg-[#007BB5]"
+      >
+        Request a Quote
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom Legal Bar -->
+  <div class="bg-[#002038] py-[1.5rem] text-[0.85rem] text-[#94a3b8]">
+    <div class="site-container flex flex-col items-center justify-between gap-[1rem] text-center min-[769px]:flex-row min-[769px]:text-left">
+      <div>
+        &copy; {SITE_CONFIG.copyrightYear} {SITE_CONFIG.brandName}. All rights reserved.
+      </div>
+      <div class="flex flex-wrap justify-center gap-[1.5rem]">
+        {
+          legalLinks.map((link) => (
+            <a
+              href={link.href}
+              class="transition-colors duration-300 hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

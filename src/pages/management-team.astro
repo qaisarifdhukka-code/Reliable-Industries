@@ -1,0 +1,70 @@
+---
+import { Mail } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+import { EXECUTIVE_TEAM } from '@/data/companyData';
+---
+
+<BaseLayout
+  title={`Management Team | ${SITE_CONFIG.brandName} Leadership`}
+  description="Meet the executive leadership and engineering pioneers driving technological innovation and operational excellence at Reliable Industries."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="LEADERSHIP & VISION"
+      title="Our Executive Management Team"
+      subtitle="Decades of collective mechanical engineering expertise, precision manufacturing oversight, and global business stewardship."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Management Team' }]}
+      align="center"
+    />
+
+    <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container grid grid-cols-1 gap-[1.5rem] min-[769px]:grid-cols-3">
+        {
+          EXECUTIVE_TEAM.map((member, index) => (
+            <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)]">
+              <div
+                class:list={[
+                  'flex h-[200px] items-center justify-center border-b-4 border-[#009FE3]',
+                  index === 1 ? 'bg-[#002038]' : 'bg-[#003B6D]',
+                ]}
+              >
+                <div class="flex h-[84px] w-[84px] items-center justify-center rounded-full border-2 border-[#009FE3] bg-white/10 text-[1.6rem] font-bold tracking-[1px] text-white">
+                  {member.initials}
+                </div>
+              </div>
+
+              <div class="flex grow flex-col p-[1.75rem]">
+                <span class="mb-[0.35rem] block text-[0.76rem] font-bold uppercase tracking-[0.8px] text-[#009FE3]">
+                  {member.role}
+                </span>
+                <h2 class="mb-[0.75rem] text-[1.3rem] font-bold text-[#003B6D]">
+                  {member.name}
+                </h2>
+                <p class="mb-[1.25rem] grow text-[0.92rem] leading-[1.6] text-[#334155]">
+                  {member.bio}
+                </p>
+                <div class="border-t border-[#e2e8f0] pt-[0.9rem]">
+                  <a
+                    href={`mailto:${SITE_CONFIG.businessDetails.email}`}
+                    class="inline-flex items-center gap-[6px] text-[0.88rem] font-semibold text-[#009FE3] transition-colors hover:text-[#003B6D]"
+                  >
+                    <Mail size={15} stroke-width={2} aria-hidden="true" />
+                    <span>Contact Office</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

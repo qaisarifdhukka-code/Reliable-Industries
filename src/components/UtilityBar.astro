@@ -1,0 +1,24 @@
+---
+import { UTILITY_LINKS } from '@/data/navigation';
+---
+
+<div class="hidden min-[769px]:block bg-[#003B6D] py-[0.5rem] text-[0.8rem] text-white">
+  <div class="site-container flex items-center justify-between">
+    <div>
+      <span>Reliable Industries Group</span>
+    </div>
+    <nav aria-label="Utility navigation">
+      {
+        UTILITY_LINKS.map((link) => (
+          <a
+            href={link.href}
+            download={link.download}
+            class="ml-[1.5rem] text-white transition-colors duration-300 ease-in-out hover:text-[#009FE3]"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</div>

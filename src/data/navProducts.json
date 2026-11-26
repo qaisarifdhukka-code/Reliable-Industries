@@ -1,0 +1,771 @@
+[
+  {
+    "id": 1,
+    "name": "Reactor Seal",
+    "category": "Reactor Seal",
+    "categorySlug": "reactor-seal",
+    "slug": "reactor-seal-1",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "20mm -160mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 160°C"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Agitator Seal",
+    "category": "Agitator Seal",
+    "categorySlug": "agitator-seal",
+    "slug": "agitator-seal-2",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "20mm -160mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 250°C"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Thermosyphon",
+    "category": "Thermosyphon",
+    "categorySlug": "thermosyphon",
+    "slug": "thermosyphon-3",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "150°C"
+      },
+      {
+        "label": "Press",
+        "value": "15 Bar"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Heat Exchanger System",
+    "category": "Heat Exchanger System",
+    "categorySlug": "heat-exchanged-system",
+    "slug": "heat-exchanger-system-4",
+    "specs": [
+      {
+        "label": "Press",
+        "value": "46 kg/CM of Coil"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "High Temp Seal Series 5",
+    "category": "High Temp Seal",
+    "categorySlug": "high-temp-seal",
+    "slug": "high-temp-seal-series-5",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 300°C"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "High Temp Seal Series 6",
+    "category": "High Temp Seal",
+    "categorySlug": "high-temp-seal",
+    "slug": "high-temp-seal-series-6",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 300°C"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "High Temp Seal Series 7",
+    "category": "High Temp Seal",
+    "categorySlug": "high-temp-seal",
+    "slug": "high-temp-seal-series-7",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 400°C"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Reliable Cartridge seal Series 8",
+    "category": "Cartridge Seal",
+    "categorySlug": "cartridge-seal",
+    "slug": "reliable-cartridge-seal-series-8",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Reliable Single Spring Seal Series 9",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-9",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Reliable Single Spring Seal Series 11",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-11",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Reliable Single Spring Seal Series 12",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-12",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Reliable Rubber Bellow Single Spring Seal Series 13",
+    "category": "Water Seal",
+    "categorySlug": "water-seal",
+    "slug": "reliable-rubber-bellow-single-spring-seal-series-13",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Reliable Rotary Pressure Joints",
+    "category": "Rotary Joints",
+    "categorySlug": "rotary-joints",
+    "slug": "reliable-rotary-pressure-joints-15",
+    "specs": []
+  },
+  {
+    "id": 16,
+    "name": "01 RMF 60 MONOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "01-rmf-60-this-is-monoflow-rotating-union-16",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 150°C"
+      },
+      {
+        "label": "Press",
+        "value": "0 to 15 kg/cm²"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "RDF 80 - DEOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rdf-80-this-is-deofolw-rotating-union-17",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 150°C"
+      },
+      {
+        "label": "Press",
+        "value": "0 to 15 kg/cm²"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "RMF - CH - 60 - MONOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rmf-ch-60-this-is-monoflow-rotating-union-18",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "3/4” to 2”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "RDF - CH - 80 - DEOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rdf-ch-80-this-is-deofolw-rotating-union-19",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      },
+      {
+        "label": "Press",
+        "value": "0 to 5 kg/cm²"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "RMF-FL 100 - MONOFLOW ROTATING UNION FLANGED END",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rmf-fl-100-this-is-monoflow-rotating-union-flanged-end-20",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 150°C"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "RDF FL 120 - DEOFLOW ROTATING UNION FLANGED END",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rdf-fl-120-this-is-deoflow-rotatiing-union-flanged-end-21",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 150°C"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "RMF - HT-140 - MONOFLOW HIGH TEMPERATURE ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rmf-ht-140-this-is-monoflow-high-tempreture-rotating-union-22",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "RMF - HT-140 - MONOFLOW HIGH TEMPERATURE ROTATING UNION",
+    "category": "Hot Oil Rotary Joints",
+    "categorySlug": "hot-oil-rotary-joints",
+    "slug": "rmf-ht-140-this-is-monoflow-high-tempreture-rotating-union-23",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "RDF - DSGQ - 220 - DEOFLOW FLANGED END HIGH TEMP ROTATING UNION",
+    "category": "Hot Oil Rotary Joints",
+    "categorySlug": "hot-oil-rotary-joints",
+    "slug": "rdf-dsgq-220-this-is-deoflow-flanged-end-high-temp-rotating-union-24",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "RMF - HT 180 - FLANGED END ROTATING UNION",
+    "category": "Hot Oil Rotary Joints",
+    "categorySlug": "hot-oil-rotary-joints",
+    "slug": "rmf-ht-180-this-is-flanged-end-rotating-union-25",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "RDF - HT 200 - DEOFLOW FLANGED END ROTATING UNION",
+    "category": "Hot Oil Rotary Joints",
+    "categorySlug": "hot-oil-rotary-joints",
+    "slug": "rdf-ht-200-this-is-deoflow-flanged-end-rotating-union-26",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "RDF - HT 200 - DEOFLOW FLANGED END ROTATING UNION",
+    "category": "Hot Oil Rotary Joints",
+    "categorySlug": "hot-oil-rotary-joints",
+    "slug": "rdf-ht-200-this-is-deoflow-flanged-end-rotating-union-27",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2” to 3”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "RMF - HT-140 - MONOFLOW HIGH TEMPERATURE ROTATING UNION",
+    "category": "Steam Rotary Joints",
+    "categorySlug": "steam-rotary-joints",
+    "slug": "rmf-ht-140-this-is-monoflow-high-tempreture-rotating-union-28",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2\" to 3\""
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "RDF-HT- 160 - DEOFLOW HIGH TEMPERATURE ROTATING UNION",
+    "category": "Steam Rotary Joints",
+    "categorySlug": "steam-rotary-joints",
+    "slug": "rdf-ht-160-this-is-deoflow-high-tempreture-rotating-union-51",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2\" to 3\""
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "RMF - HT 180 - FLANGED END ROTATING UNION",
+    "category": "Steam Rotary Joints",
+    "categorySlug": "steam-rotary-joints",
+    "slug": "rmf-ht-180-this-is-flanged-end-rotating-union-52",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2\" to 3\""
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "RDF - HT 200 - DEOFLOW FLANGED END ROTATING UNION",
+    "category": "Steam Rotary Joints",
+    "categorySlug": "steam-rotary-joints",
+    "slug": "rdf-ht-200-this-is-deoflow-flanged-end-rotating-union-53",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "1/2\" to 3\""
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "RMF - H-100 - HYDRAULIC ROTATING UNION",
+    "category": "Hydraulic Rotary Joints",
+    "categorySlug": "hydrolic-rotary-joints",
+    "slug": "rmf-h-100-this-is-hydraulic-rotating-union-29",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      },
+      {
+        "label": "Press",
+        "value": "Oil 100 to 150 bar"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "RDF – H-150 - HYDRAULIC ROTATING UNION",
+    "category": "Hydraulic Rotary Joints",
+    "categorySlug": "hydrolic-rotary-joints",
+    "slug": "rdf-h-150-this-is-hydraulic-rotating-union-30",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "3/4 to 2 1/2"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "RDF - H-200 - HYDRAULIC ROTATING UNION",
+    "category": "Hydraulic Rotary Joints",
+    "categorySlug": "hydrolic-rotary-joints",
+    "slug": "rdf-h-200-this-is-hydraulic-rotating-union-31",
+    "specs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      },
+      {
+        "label": "Press",
+        "value": "0 to 250 bar"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Multi Spring Seal Series 33",
+    "category": "Multi Spring Series Seal",
+    "categorySlug": "multi-spring-series-seal",
+    "slug": "inside-mounting-multi-spring-seal-series-33",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Multi Spring Seal Series 34",
+    "category": "Multi Spring Series Seal",
+    "categorySlug": "multi-spring-series-seal",
+    "slug": "inside-mounting-multi-spring-seal-series-34",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Multi Spring Seal Series 35",
+    "category": "Multi Spring Series Seal",
+    "categorySlug": "multi-spring-series-seal",
+    "slug": "inside-mounting-multi-spring-seal-series-35",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Multi Spring Seal Series 36",
+    "category": "Multi Spring Series Seal",
+    "categorySlug": "multi-spring-series-seal",
+    "slug": "outside-mounting-multi-spring-seal-series-36",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Multi Spring Seal Series 37",
+    "category": "Multi Spring Series Seal",
+    "categorySlug": "multi-spring-series-seal",
+    "slug": "outside-mounting-multi-spring-seal-series-37",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Reliable Single Spring Seal Series 39",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-39",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Reliable Single Spring Seal Series 40",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-40",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Reliable Single Spring Seal Series 41",
+    "category": "Single Spring Series Seal",
+    "categorySlug": "single-spring-series-seal",
+    "slug": "reliable-inside-mounted-single-spring-seal-series-41",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Reliable Rubber Bellow Single Spring Seal Series 42",
+    "category": "Water Seal",
+    "categorySlug": "water-seal",
+    "slug": "reliable-rubber-bellow-single-spring-seal-series-42",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Reliable Rubber Bellow Single Spring Seal Series 43",
+    "category": "Water Seal",
+    "categorySlug": "water-seal",
+    "slug": "reliable-rubber-bellow-single-spring-seal-series-43",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "High Temp Seal Series 47",
+    "category": "High Temp Seal",
+    "categorySlug": "high-temp-seal",
+    "slug": "high-temp-seal-series-47",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 400°C"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Reliable Cartridge seal Series 48",
+    "category": "Cartridge Seal",
+    "categorySlug": "cartridge-seal",
+    "slug": "reliable-cartridge-seal-series-48",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Reliable Cartridge seal Series 49",
+    "category": "Cartridge Seal",
+    "categorySlug": "cartridge-seal",
+    "slug": "reliable-cartridge-seal-series-49",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "10 - 100mm"
+      },
+      {
+        "label": "Temp",
+        "value": "0 to 180°C"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "RDF - DSGQ - 220 - DEOFLOW FLANGED END HIGH TEMP ROTATING UNION",
+    "category": "High Temperature Rotary Joint",
+    "categorySlug": "high-temp-rotary-joints",
+    "slug": "rdf-dsgq-220-this-is-deoflow-flanged-end-high-temp-rotating-union-54",
+    "specs": [
+      {
+        "label": "Size",
+        "value": "3\", 3 ½\", 4\""
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 350°C"
+      }
+    ]
+  }
+]

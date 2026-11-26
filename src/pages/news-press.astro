@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+import { NEWS_RELEASES } from '@/data/companyData';
+import cncImg from '@/assets/images/hero_industrial_new.jpg';
+import cadImg from '@/assets/images/engineering_cad.jpg';
+import chemImg from '@/assets/images/industry_chemical.jpg';
+
+const imageMap = {
+  cnc: cncImg,
+  cad: cadImg,
+  chemical: chemImg,
+};
+---
+
+<BaseLayout
+  title={`News & Press Releases | ${SITE_CONFIG.brandName}`}
+  description="Stay updated with the latest technological developments, plant expansions, international contracts, and engineering milestones from Reliable Industries."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="MEDIA & ANNOUNCEMENTS"
+      title="News & Press Releases"
+      subtitle="Discover how Reliable Industries continues to push the boundaries of mechanical sealing innovation worldwide."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'News & Press' }]}
+      align="center"
+    />
+
+    <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container grid grid-cols-1 gap-[1.5rem] min-[769px]:grid-cols-3">
+        {
+          NEWS_RELEASES.map((article) => (
+            <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)]">
+              <div class="h-[200px] w-full overflow-hidden bg-[#003B6D]">
+                <Image
+                  src={imageMap[article.imageKey]}
+                  alt={article.title}
+                  width={680}
+                  format="webp"
+                  quality={85}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div class="flex grow flex-col p-[1.5rem]">
+                <span class="mb-[0.45rem] block text-[0.76rem] font-bold uppercase tracking-[0.8px] text-[#009FE3]">
+                  {article.meta}
+                </span>
+                <h2 class="mb-[0.75rem] text-[1.18rem] font-bold leading-[1.35] text-[#003B6D]">
+                  {article.title}
+                </h2>
+                <p class="mb-[1.25rem] grow text-[0.92rem] leading-[1.6] text-[#334155]">
+                  {article.summary}
+                </p>
+                <a
+                  href={`/contact?inquiry=${encodeURIComponent(article.title)}`}
+                  class="inline-flex items-center gap-[5px] self-start text-[0.88rem] font-semibold text-[#009FE3] transition-colors hover:text-[#003B6D]"
+                >
+                  <span>Request Press Kit</span>
+                  <ArrowRight size={14} stroke-width={2.2} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

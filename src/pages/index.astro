@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import HeroSection from '@/components/HeroSection.astro';
+import ProductsSection from '@/components/ProductsSection.astro';
+import WhyChooseUs from '@/components/WhyChooseUs.astro';
+import IndustriesSection from '@/components/IndustriesSection.astro';
+import EngineeringSection from '@/components/EngineeringSection.astro';
+import AdvantagesSection from '@/components/AdvantagesSection.astro';
+import CertificatesSection from '@/components/CertificatesSection.astro';
+import FeaturedProductsSection from '@/components/FeaturedProductsSection.astro';
+import TestimonialsSection from '@/components/TestimonialsSection.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<BaseLayout>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <HeroSection />
+    <ProductsSection />
+    <WhyChooseUs />
+    <IndustriesSection />
+    <EngineeringSection />
+    <AdvantagesSection />
+    <CertificatesSection />
+    <FeaturedProductsSection />
+    <TestimonialsSection />
+  </main>
+  <Footer />
+</BaseLayout>

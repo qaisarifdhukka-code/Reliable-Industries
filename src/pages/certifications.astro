@@ -1,0 +1,87 @@
+---
+import { Award, FileDown } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+import { CERTIFICATION_CARDS_DETAIL } from '@/data/companyData';
+---
+
+<BaseLayout
+  title={`Certifications & Quality Standards | ${SITE_CONFIG.brandName}`}
+  description="Explore Reliable Industries' international accreditations, including API Spec Q1, ASME U Stamp, ISO 9001:2015, ATEX, FDA, and RoHS compliance certificates."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="GLOBAL STANDARDS & ACCREDITATIONS"
+      title="Quality & Compliance Certifications"
+      subtitle="Every mechanical seal and auxiliary system manufactured by Reliable Industries adheres to the world's most rigorous engineering and safety standards."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Certifications' }]}
+      align="center"
+    />
+
+    <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="grid grid-cols-1 gap-[1.5rem] min-[577px]:grid-cols-2 min-[1025px]:grid-cols-3">
+          {
+            CERTIFICATION_CARDS_DETAIL.map((cert) => {
+              const isCyan = cert.accent === 'cyan';
+              return (
+                <article
+                  class:list={[
+                    'flex flex-col justify-between rounded-[2px] border border-[#e2e8f0] border-t-4 bg-white p-[1.75rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)]',
+                    isCyan ? 'border-t-[#009FE3]' : 'border-t-[#003B6D]',
+                  ]}
+                >
+                  <div>
+                    <div class="mb-[1rem] flex items-center justify-between gap-2">
+                      <span
+                        class:list={[
+                          'inline-block rounded-[2px] px-[0.65rem] py-[0.2rem] text-[0.72rem] font-bold uppercase tracking-[0.8px]',
+                          isCyan
+                            ? 'bg-[#009FE3]/10 text-[#009FE3]'
+                            : 'bg-[#F4F6F8] text-[#003B6D]',
+                        ]}
+                      >
+                        {cert.badge}
+                      </span>
+                      <Award
+                        size={22}
+                        stroke-width={2}
+                        class={isCyan ? 'text-[#009FE3]' : 'text-[#003B6D]'}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <h2 class="mb-[0.6rem] text-[1.22rem] font-bold text-[#003B6D]">
+                      {cert.title}
+                    </h2>
+                    <p class="mb-[1.25rem] text-[0.92rem] leading-[1.6] text-[#334155]">
+                      {cert.description}
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-between border-t border-[#e2e8f0] pt-[1rem] text-[0.82rem]">
+                    <span class="font-semibold text-[#003B6D]">{cert.status}</span>
+                    <a
+                      href={SITE_CONFIG.brochurePath}
+                      download={SITE_CONFIG.brochureDownloadName}
+                      class="inline-flex items-center gap-[5px] font-bold text-[#009FE3] transition-colors hover:text-[#003B6D]"
+                    >
+                      <FileDown size={14} stroke-width={2} aria-hidden="true" />
+                      <span>Download PDF</span>
+                    </a>
+                  </div>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

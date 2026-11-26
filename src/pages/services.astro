@@ -1,0 +1,298 @@
+---
+import {
+  BookOpen,
+  ClipboardList,
+  Hammer,
+  PackageCheck,
+  Settings2,
+  ShieldAlert,
+  Users,
+} from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UtilityBar from '@/components/UtilityBar.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { SITE_CONFIG } from '@/config/site';
+
+interface Service {
+  id: string;
+  icon: typeof Settings2;
+  label: string;
+  title: string;
+  description: string;
+  points: string[];
+  cta: string;
+  ctaHref: string;
+  accent: '#009FE3' | '#003B6D' | '#FFE600';
+}
+
+const SERVICES: Service[] = [
+  {
+    id: 'consultation',
+    icon: ClipboardList,
+    label: 'SERVICE 01',
+    title: 'Consultation & Process Analysis',
+    description:
+      'We perform a thorough analysis of your plant process — evaluating pump make, model, type, and system configuration — to identify root causes of seal failures and recommend the correct mechanical seal and sealing system for your specific liquid parameters.',
+    points: [
+      'On-site plant process & pump system evaluation',
+      'Identification of defects in the process affecting seal life',
+      'Correct seal type, material & secondary system selection',
+      'Comprehensive failure factor elimination report',
+    ],
+    cta: 'Request Consultation',
+    ctaHref: '/contact?inquiry=Consultation+%26+Process+Analysis',
+    accent: '#009FE3',
+  },
+  {
+    id: 'technical-support',
+    icon: Settings2,
+    label: 'SERVICE 02',
+    title: 'Technical Support',
+    description:
+      'Our engineering team eliminates the drawbacks of your booster and pump systems. We provide correct application guidance for mechanical pumps and seals and work with you to improve process system quality and reliability.',
+    points: [
+      'Eliminate pump & booster system drawbacks',
+      'Correct pump and mechanical seal application guidance',
+      'Seal quality verification for improved process performance',
+      'Ongoing remote & on-site technical advisory',
+    ],
+    cta: 'Get Technical Support',
+    ctaHref: '/contact?inquiry=Technical+Support',
+    accent: '#003B6D',
+  },
+  {
+    id: 'maintenance',
+    icon: Hammer,
+    label: 'SERVICE 03',
+    title: 'Maintenance',
+    description:
+      'We provide full techniques and practical guidance for the correct maintenance of pump and mechanical seal systems. Our maintenance program improves pump performance, extends seal life, eliminates drawback failures, and targets higher production output.',
+    points: [
+      'Full maintenance technique for pumps & seal applications',
+      'Improving pump performance and production targets',
+      'Elimination of seal face, secondary system & installation failures',
+      'Motor coupling and pump system alignment guidance',
+    ],
+    cta: 'Schedule Maintenance',
+    ctaHref: '/contact?inquiry=Maintenance+Service',
+    accent: '#009FE3',
+  },
+  {
+    id: 'repair-refurbishment',
+    icon: ShieldAlert,
+    label: 'SERVICE 04',
+    title: 'Repair & Refurbishment',
+    description:
+      'We repair your existing mechanical seals by providing new lapped seal faces and elastomers selected precisely as per your liquid parameters. This extends the serviceable life of your seal investment and significantly reduces the cost of mechanical seal ownership.',
+    points: [
+      'New precision-lapped seal faces (SiC, TC, Carbon, Ceramic)',
+      'Elastomer replacement per liquid compatibility & temperature',
+      'Selection as per actual process liquid parameters',
+      'Significant reduction in total mech seal ownership cost',
+    ],
+    cta: 'Request Repair',
+    ctaHref: '/contact?inquiry=Repair+%26+Refurbishment',
+    accent: '#003B6D',
+  },
+  {
+    id: 'training',
+    icon: BookOpen,
+    label: 'SERVICE 05',
+    title: 'Training',
+    description:
+      'We conduct practical training programs at our plant or at your facility. Training covers the complete mechanical seal and pump product process — from process analysis and application, to hands-on installation and testing — equipping your team to eliminate system drawbacks independently.',
+    points: [
+      'Training sessions at Reliable\'s plant or customer site',
+      'Complete overview of mech seal product and pump process',
+      'Full practical installation training in pump & reactor applications',
+      'Process analysis, application selection & system troubleshooting',
+    ],
+    cta: 'Enquire About Training',
+    ctaHref: '/contact?inquiry=Training+Programme',
+    accent: '#009FE3',
+  },
+  {
+    id: 'inventory-control',
+    icon: PackageCheck,
+    label: 'SERVICE 06',
+    title: 'Inventory Control',
+    description:
+      'We analyse the pump make, model, and process across your plant, then develop a combined seal model that fits multiple pump types. This consolidation strategy means less inventory is required to maintain adequate stock across your facility.',
+    points: [
+      'Cross-plant pump model & application analysis',
+      'Development of unified seal type for combined pump models',
+      'Reduction in total spare parts SKUs and inventory holding cost',
+      'Optimized stock level recommendations per site',
+    ],
+    cta: 'Optimise My Inventory',
+    ctaHref: '/contact?inquiry=Inventory+Control+Consultation',
+    accent: '#003B6D',
+  },
+  {
+    id: 'preventive-maintenance',
+    icon: Users,
+    label: 'SERVICE 07',
+    title: 'Preventive Maintenance',
+    description:
+      'We analyse the existing life of mechanical seals in your pumps, provide advance warning for fixing the preventive maintenance period, and help you maintain a small essential inventory of backup mech seal and pump spare parts. We also train your team on cleaning and conditioning old parts correctly.',
+    points: [
+      'Analysis of existing mech seal service life per pump',
+      'Advance warning schedule for preventive maintenance intervals',
+      'Essential backup spare parts inventory planning (seal & pump spares)',
+      'Practical training on cleaning and reusing old spare parts',
+    ],
+    cta: 'Set Up PM Programme',
+    ctaHref: '/contact?inquiry=Preventive+Maintenance+Programme',
+    accent: '#009FE3',
+  },
+];
+---
+
+<BaseLayout
+  title={`Services | ${SITE_CONFIG.brandName} — Mechanical Seal Consulting, Repair & Training`}
+  description="Reliable Industries offers 7 expert services: consultation, technical support, maintenance, repair, training, inventory control, and preventive maintenance for mechanical seals and pump systems."
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-content">
+    <PageHeader
+      kicker="WHAT WE OFFER"
+      title="Complete Mechanical Seal Service Solutions"
+      subtitle="From plant-level process analysis to on-site installation training, Reliable Industries provides end-to-end support to maximize the life and performance of your mechanical seals and pump systems."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
+      align="center"
+    />
+
+    <!-- Services Grid -->
+    <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="grid grid-cols-1 gap-[2rem] min-[769px]:grid-cols-2 min-[1201px]:grid-cols-2">
+          {SERVICES.map((svc) => {
+            const Icon = svc.icon;
+            return (
+              <article
+                class="group flex flex-col rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,43,73,0.12)]"
+                id={svc.id}
+              >
+                <!-- Accent top bar -->
+                <div
+                  class="h-[4px] w-full rounded-t-[2px]"
+                  style={`background:${svc.accent}`}
+                />
+
+                <div class="flex flex-1 flex-col p-[1.75rem] min-[577px]:p-[2rem]">
+                  <!-- Icon + Label row -->
+                  <div class="mb-[1.25rem] flex items-center gap-[0.9rem]">
+                    <span
+                      class="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[2px]"
+                      style={`background:${svc.accent}1A`}
+                    >
+                      <Icon
+                        size={24}
+                        stroke-width={1.8}
+                        style={`color:${svc.accent}`}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span class="text-[0.78rem] font-bold uppercase tracking-[1.5px] text-[#64748b]">
+                      {svc.label}
+                    </span>
+                  </div>
+
+                  <!-- Title -->
+                  <h2 class="mb-[0.75rem] text-[1.25rem] font-bold leading-[1.3] text-[#003B6D] min-[769px]:text-[1.4rem]">
+                    {svc.title}
+                  </h2>
+
+                  <!-- Description -->
+                  <p class="mb-[1.25rem] text-[0.94rem] leading-[1.7] text-[#334155]">
+                    {svc.description}
+                  </p>
+
+                  <!-- Points -->
+                  <ul class="mb-[1.75rem] flex-1 space-y-[0.6rem]">
+                    {svc.points.map((pt) => (
+                      <li class="flex items-start gap-[0.6rem] text-[0.9rem] leading-[1.5] text-[#334155]">
+                        <span
+                          class="mt-[5px] h-[7px] w-[7px] shrink-0 rounded-[50%]"
+                          style={`background:${svc.accent}`}
+                          aria-hidden="true"
+                        />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <!-- CTA -->
+                  <a
+                    href={svc.ctaHref}
+                    class="btn mt-auto inline-block w-fit rounded-[4px] px-[1.5rem] py-[0.65rem] text-[0.88rem] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+                    style={`background:${svc.accent}`}
+                  >
+                    {svc.cta}
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Reliable for Services -->
+    <section class="bg-white py-[3.5rem] min-[769px]:py-[5rem]">
+      <div class="site-container">
+        <div class="mb-[2.5rem] max-w-[700px]">
+          <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+            THE RELIABLE ADVANTAGE
+          </span>
+          <h2 class="text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+            Expertise You Can Rely On
+          </h2>
+          <p class="mt-[0.75rem] text-[1rem] leading-[1.7] text-[#334155]">
+            Every service we offer draws on decades of hands-on application experience across heavy process industries — combining field-proven engineering knowledge with genuine commitment to your uptime.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-[1.25rem] min-[577px]:grid-cols-2 min-[1025px]:grid-cols-4">
+          {[
+            { stat: '20+', label: 'Years of service expertise' },
+            { stat: '30+', label: 'Skilled service engineers & technicians' },
+            { stat: '46+', label: 'Seal models repaired & supported' },
+            { stat: '10', label: 'Industries actively supported' },
+          ].map((item) => (
+            <div class="rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-[1.5rem] text-center">
+              <div class="text-[2rem] font-extrabold text-[#009FE3] min-[577px]:text-[2.4rem]">
+                {item.stat}
+              </div>
+              <div class="mt-[0.3rem] text-[0.85rem] font-semibold text-[#334155]">
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bg-[#002038] py-[3.5rem] text-center text-white min-[769px]:py-[4.5rem]">
+      <div class="site-container">
+        <h2 class="mb-[0.75rem] text-[1.75rem] font-bold text-white min-[769px]:text-[2rem]">
+          Ready to Improve Your Seal System Performance?
+        </h2>
+        <p class="mx-auto mb-[1.75rem] max-w-[600px] text-[1rem] text-[#cbd5e1]">
+          Contact our team to discuss which service programme fits your plant requirements.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block rounded-[4px] border-2 border-[#009FE3] bg-[#009FE3] px-[2rem] py-[0.8rem] text-[0.95rem] font-semibold text-white transition-colors duration-300 hover:border-[#007BB5] hover:bg-[#007BB5]"
+        >
+          Contact Our Service Team
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

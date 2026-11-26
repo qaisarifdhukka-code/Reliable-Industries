@@ -1,0 +1,100 @@
+---
+import { SITE_CONFIG } from '@/config/site';
+import AccreditationBadges from '@/components/AccreditationBadges.astro';
+import DesktopNav from '@/components/DesktopNav';
+import MobileNav from '@/components/MobileNav';
+import {
+  BROCHURE_LINK,
+  PRODUCT_SUPER_CATEGORIES,
+  SEARCHABLE_PRODUCTS,
+  TOP_NAV_MENUS,
+  UTILITY_LINKS,
+  type TopMenuConfig,
+} from '@/data/navigation';
+
+const pathname = Astro.url.pathname;
+let activeMenuId: TopMenuConfig['id'] | null = 'products';
+if (pathname.startsWith('/industries')) {
+  activeMenuId = 'industries';
+} else if (
+  pathname.startsWith('/about') ||
+  pathname.startsWith('/management-team') ||
+  pathname.startsWith('/certifications') ||
+  pathname.startsWith('/news-press') ||
+  pathname.startsWith('/events-trade-fairs')
+) {
+  activeMenuId = 'company';
+} else if (
+  pathname.startsWith('/contact') ||
+  pathname.startsWith('/privacy-policy') ||
+  pathname.startsWith('/terms-conditions') ||
+  pathname.startsWith('/shipping-policy') ||
+  pathname.startsWith('/disclaimer')
+) {
+  activeMenuId = null;
+}
+---
+
+<header
+  id="main-header"
+  class="sticky top-0 z-[100] bg-white py-[0.55rem] shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-[padding] duration-300 ease-in-out [&.scrolled]:py-[0.38rem]"
+>
+  <div class="site-container flex items-center justify-between">
+    <a href="/" class="flex items-center" aria-label={`${SITE_CONFIG.brandName} Home`}>
+      <div>
+        <AccreditationBadges class="mb-[4px]" />
+        <div class="flex items-baseline gap-[7px]">
+          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.35rem]">
+            {SITE_CONFIG.brandFirst}
+          </span>
+          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.35rem]">
+            {SITE_CONFIG.brandSecond}
+          </span>
+        </div>
+        <span class="mt-[3px] block border-t border-[#003B6D] pt-[3px] text-left font-serif text-[0.58rem] font-bold leading-[1.2] text-[#003B6D] max-[880px]:text-[0.52rem]">
+          <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline1}</span>
+          <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline2}</span>
+        </span>
+      </div>
+    </a>
+
+    <DesktopNav
+      client:media="(min-width: 769px)"
+      menus={TOP_NAV_MENUS}
+      superCategories={PRODUCT_SUPER_CATEGORIES}
+      searchProducts={SEARCHABLE_PRODUCTS}
+      brochureHref={BROCHURE_LINK.href}
+      brochureDownload={BROCHURE_LINK.download}
+      activeMenuId={activeMenuId}
+    />
+
+    <MobileNav
+      client:media="(max-width: 768px)"
+      menus={TOP_NAV_MENUS}
+      superCategories={PRODUCT_SUPER_CATEGORIES}
+      searchProducts={SEARCHABLE_PRODUCTS}
+      utilityLinks={UTILITY_LINKS}
+      brochureHref={BROCHURE_LINK.href}
+      brochureDownload={BROCHURE_LINK.download}
+      brandFirst={SITE_CONFIG.brandFirst}
+      brandSecond={SITE_CONFIG.brandSecond}
+      mfgSubline1={SITE_CONFIG.mfgSubline1}
+      mfgSubline2={SITE_CONFIG.mfgSubline2}
+    />
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  if (header) {
+    const updateScrollState = () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+  }
+</script>

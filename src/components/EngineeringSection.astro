@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import MobileSliderControls from '@/components/MobileSliderControls.astro';
+import missionImg from '@/assets/images/mission_hero_bg.jpg';
+import cadImg from '@/assets/images/engineering_cad.jpg';
+import industrialNewImg from '@/assets/images/hero_industrial_new.jpg';
+import supportPortalImg from '@/assets/images/support_portal.jpg';
+import certificateIsoImg from '@/assets/images/certificate_iso_1790083146225.jpg';
+import energyImg from '@/assets/images/industry_energy_1790083113983.jpg';
+
+interface ResourceCard {
+  id: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  ctaVariant: 'cyan' | 'outline-cyan';
+  containImage?: boolean;
+}
+
+const resourceCards: ResourceCard[] = [
+  {
+    id: 'experts',
+    image: missionImg,
+    imageAlt: 'Meet our engineering experts',
+    title: 'Meet our experts',
+    description:
+      'We actively engineer solutions and rigorously test them in our advanced R&D facility.',
+    ctaLabel: 'Talk to an expert',
+    ctaHref: '/contact?inquiry=Engineering%20Consultation',
+    ctaVariant: 'cyan',
+  },
+  {
+    id: 'advanced-engineering',
+    image: cadImg,
+    imageAlt: 'Advanced sealing engineering CAD',
+    title: 'Advanced Engineering',
+    description:
+      'Designing reliable sealing systems for extreme and persistent problems globally.',
+    ctaLabel: 'Learn about R&D',
+    ctaHref: '/about',
+    ctaVariant: 'cyan',
+  },
+  {
+    id: 'precision-manufacturing',
+    image: industrialNewImg,
+    imageAlt: 'Precision CNC manufacturing and pump testing facility',
+    title: 'Precision Manufacturing',
+    description:
+      'State-of-the-art CNC multi-axis machining and automated testing rigs guaranteeing zero-leakage.',
+    ctaLabel: 'Explore Facilities',
+    ctaHref: '/about',
+    ctaVariant: 'cyan',
+  },
+  {
+    id: 'online-support',
+    image: supportPortalImg,
+    imageAlt: 'Online technical support portal',
+    title: 'Online Support',
+    description:
+      'Check product specs, access manuals, and request custom modifications.',
+    ctaLabel: 'To the Portal',
+    ctaHref: '/contact?inquiry=Online%20Support%20Portal',
+    ctaVariant: 'cyan',
+  },
+  {
+    id: 'quality-assurance',
+    image: certificateIsoImg,
+    imageAlt: 'ISO 9001 quality assurance certification',
+    title: 'Quality Assurance',
+    description:
+      'ISO 9001:2015 certified, API 682, ATEX, and FDA compliant operations.',
+    ctaLabel: 'View Certificates',
+    ctaHref: '/certifications',
+    ctaVariant: 'cyan',
+    containImage: true,
+  },
+  {
+    id: 'global-network',
+    image: energyImg,
+    imageAlt: 'Global sales and service network',
+    title: 'Global Network',
+    description:
+      'Local support worldwide. Find a service center near your facilities.',
+    ctaLabel: 'Find Location',
+    ctaHref: '/contact#location',
+    ctaVariant: 'cyan',
+  },
+];
+---
+
+<section class="bg-white py-[50px] min-[769px]:py-[80px]">
+  <div class="site-container">
+    <div class="mb-[40px]">
+      <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+        INNOVATION &amp; SUPPORT
+      </span>
+      <h2 class="mb-[1.5rem] text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+        Engineering &amp; Resources
+      </h2>
+    </div>
+
+    <div
+      data-mobile-slider-track="engineering"
+      class="max-[768px]:flex max-[768px]:flex-nowrap max-[768px]:gap-[14px] max-[768px]:overflow-x-auto max-[768px]:snap-x max-[768px]:snap-mandatory max-[768px]:pb-[4px] max-[768px]:scroll-smooth max-[768px]:[scrollbar-width:none] max-[768px]:[&::-webkit-scrollbar]:hidden min-[769px]:grid min-[769px]:grid-cols-2 min-[769px]:gap-[20px] min-[1201px]:grid-cols-3"
+    >
+      {
+        resourceCards.map((card) => (
+          <article class="flex flex-col overflow-hidden bg-white shadow-[0_4px_15px_rgba(0,0,0,0.05)] max-[768px]:w-[86%] max-[768px]:shrink-0 max-[768px]:snap-start min-[577px]:flex-row min-[769px]:h-full">
+            <div class="relative h-[200px] w-full shrink-0 min-[577px]:h-auto min-[577px]:w-[40%]">
+              <Image
+                src={card.image}
+                alt={card.imageAlt}
+                format="webp"
+                quality={85}
+                class={
+                  card.containImage
+                    ? 'block h-full w-full object-contain p-[10px]'
+                    : 'block h-full w-full object-cover'
+                }
+              />
+            </div>
+
+            <div class="flex w-full flex-col px-[15px] py-[20px] min-[577px]:w-[60%]">
+              <h3 class="mb-[10px] text-[1.1rem] font-bold leading-[1.3] text-[#003B6D]">
+                {card.title}
+              </h3>
+              <p class="mb-[15px] grow text-[0.85rem] leading-[1.4] text-[#555555]">
+                {card.description}
+              </p>
+              <a
+                href={card.ctaHref}
+                class:list={[
+                  'inline-block cursor-pointer self-start rounded-none border px-[1rem] py-[0.5rem] text-center text-[0.8rem] font-semibold transition-all duration-300',
+                  card.ctaVariant === 'outline-cyan'
+                    ? 'border-[#009FE3] bg-transparent text-[#009FE3] hover:bg-[#009FE3] hover:text-white'
+                    : 'border-[#009FE3] bg-[#009FE3] text-white hover:border-[#0085be] hover:bg-[#0085be]',
+                ]}
+              >
+                {card.ctaLabel}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <MobileSliderControls
+      sliderId="engineering"
+      count={resourceCards.length}
+      label="Engineering & Resources"
+    />
+  </div>
+</section>

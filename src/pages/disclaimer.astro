@@ -1,0 +1,34 @@
+---
+import LegalDocument from '@/components/LegalDocument.astro';
+import { SITE_CONFIG } from '@/config/site';
+
+const sections = [
+  {
+    heading: '1. Engineering & Technical Data',
+    body: 'The specifications, dimensions, temperature and pressure ranges, CAD drawings, and technical parameters published on this website and in downloadable catalogs are for general guidance only. While Reliable Industries strives for utmost precision, actual operational performance depends heavily on operating media, rotational speed, installation tolerances, fluid viscosity, and environmental conditions.',
+  },
+  {
+    heading: '2. Application Suitability',
+    body: "It is the customer's and system designer's responsibility to verify that the selected mechanical seal model, materials of construction (elastomers, faces, metallurgies), and auxiliary support plan are appropriate for their specific process chemicals and safety standards. Consult our engineering department for certified application sign-offs.",
+  },
+  {
+    heading: '3. Intellectual Property & Trademarks',
+    body: 'All trademarks, registered brand names, product logos, CAD schematics, and text content published on this website are the proprietary intellectual property of Reliable Industries. Any unauthorized reproduction, scraping, or commercial exploitation is strictly prohibited without written consent.',
+  },
+  {
+    heading: '4. Third-Party References',
+    body: 'Any references to third-party pump manufacturers, international standards (e.g., API 682, ISO 9001, ASME), or external links are for technical identification and comparative compatibility purposes only and do not constitute endorsement.',
+  },
+];
+---
+
+<LegalDocument
+  seoTitle={`Legal Disclaimer | ${SITE_CONFIG.brandName}`}
+  seoDescription="Important legal notice and technical information disclaimer regarding mechanical sealing products, specifications, and applications."
+  kicker="LEGAL & TECHNICAL NOTICE"
+  pageTitle="Website & Technical Disclaimer"
+  subtitle="Please review our engineering disclaimer concerning product specifications, operational limits, and website data."
+  breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Disclaimer' }]}
+  sections={sections}
+  footerNoticeHtml={`<strong>Need application verification?</strong> Contact our technical division directly at <a href="mailto:${SITE_CONFIG.businessDetails.departmentEmails.tech}" class="font-semibold text-[#009FE3] hover:text-[#003B6D]">${SITE_CONFIG.businessDetails.departmentEmails.tech}</a> or call <a href="tel:+917888065557" class="font-semibold text-[#009FE3] hover:text-[#003B6D]">+91- 78880 65557</a>.`}
+/>

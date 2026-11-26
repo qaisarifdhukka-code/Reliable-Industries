@@ -1,0 +1,118 @@
+---
+import { Quote } from '@lucide/astro';
+import MobileSliderControls from '@/components/MobileSliderControls.astro';
+
+interface TestimonialItem {
+  id: string;
+  sector: string;
+  quote: string;
+  initials: string;
+  authorName: string;
+  authorRole: string;
+  accentTop: 'cyan' | 'navy';
+}
+
+const testimonials: TestimonialItem[] = [
+  {
+    id: 'review-1',
+    sector: 'PETROCHEMICAL REFINERY',
+    quote:
+      "Reliable's heavy-duty cartridge seals completely solved our recurrent leakage problem on high-temperature chemical slurry pumps. We have experienced zero downtime in over 18 months of 24/7 continuous operation. Excellent engineering support!",
+    initials: 'RS',
+    authorName: 'Rajesh Singhania',
+    authorRole: 'Chief Maintenance Head • Petrochemical Refinery',
+    accentTop: 'cyan',
+  },
+  {
+    id: 'review-2',
+    sector: 'FERTILIZER & AGROCHEM',
+    quote:
+      'Custom engineered reactor seals delivered with complete API 682 compliance test certificates well ahead of our turnaround schedule. Their responsiveness and precision machining tolerances are exceptional.',
+    initials: 'VR',
+    authorName: 'Vikramaditya Rao',
+    authorRole: 'GM Rotating Equipment • Fertilizer & Agrochem Corp',
+    accentTop: 'navy',
+  },
+  {
+    id: 'review-3',
+    sector: 'THERMAL POWER GENERATION',
+    quote:
+      'We switched our plant to Reliable Industries for boiler feed pump seals and rotary unions. Their seal support systems and emergency technical dispatch saved us immense maintenance costs.',
+    initials: 'DM',
+    authorName: 'David Miller',
+    authorRole: 'Operations Lead • Thermal Power Generation',
+    accentTop: 'cyan',
+  },
+];
+---
+
+<section class="bg-white py-[3.5rem] min-[769px]:py-[5rem]">
+  <div class="site-container">
+    <div class="mb-[2rem] min-[769px]:mb-[3rem]">
+      <span class="mb-[0.5rem] block text-[0.85rem] font-bold uppercase tracking-[1.5px] text-[#009FE3]">
+        VERIFIED CLIENT FEEDBACK
+      </span>
+      <h2 class="text-[1.75rem] font-bold leading-[1.2] text-[#003B6D] min-[769px]:text-[2.2rem]">
+        Trusted By Industrial Leaders Worldwide
+      </h2>
+    </div>
+
+    <div
+      data-mobile-slider-track="testimonials"
+      class="max-[768px]:flex max-[768px]:flex-nowrap max-[768px]:gap-[1rem] max-[768px]:overflow-x-auto max-[768px]:snap-x max-[768px]:snap-mandatory max-[768px]:pb-[4px] max-[768px]:scroll-smooth max-[768px]:[scrollbar-width:none] max-[768px]:[&::-webkit-scrollbar]:hidden min-[769px]:grid min-[769px]:grid-cols-2 min-[769px]:gap-[1.5rem] min-[1025px]:grid-cols-3"
+    >
+      {
+        testimonials.map((item, index) => (
+          <article
+            class:list={[
+              'flex flex-col rounded-[2px] border border-[#e2e8f0] border-t-4 bg-white p-[1.5rem] shadow-[0_4px_20px_rgba(0,43,73,0.05)] max-[768px]:w-[88%] max-[768px]:shrink-0 max-[768px]:snap-start min-[577px]:p-[1.75rem]',
+              item.accentTop === 'cyan'
+                ? 'border-t-[#009FE3]'
+                : 'border-t-[#003B6D]',
+              index === 2 && 'min-[769px]:max-[1024px]:col-span-2',
+            ]}
+          >
+            <div class="mb-[1rem] flex items-center justify-between gap-2">
+              <Quote
+                size={22}
+                stroke-width={2}
+                class="shrink-0 text-[#009FE3]"
+                aria-hidden="true"
+              />
+              <span class="text-[0.72rem] font-bold uppercase tracking-[1px] text-[#94A3B8]">
+                {item.sector}
+              </span>
+            </div>
+
+            <blockquote class="mb-[1.5rem] grow text-[0.95rem] leading-[1.65] text-[#334155]">
+              &ldquo;{item.quote}&rdquo;
+            </blockquote>
+
+            <div class="mt-auto flex items-center gap-[0.85rem] border-t border-[#e2e8f0] pt-[1rem]">
+              <div
+                aria-hidden="true"
+                class="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[2px] bg-[#003B6D] text-[0.82rem] font-bold tracking-[0.5px] text-white"
+              >
+                {item.initials}
+              </div>
+              <div>
+                <p class="text-[0.95rem] font-bold leading-[1.3] text-[#003B6D]">
+                  {item.authorName}
+                </p>
+                <p class="text-[0.82rem] text-[#64748b]">
+                  {item.authorRole}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <MobileSliderControls
+      sliderId="testimonials"
+      count={testimonials.length}
+      label="Testimonials"
+    />
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+import { ChevronRight } from '@lucide/astro';
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+export interface Props {
+  kicker: string;
+  title: string;
+  subtitle?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  align?: 'left' | 'center';
+}
+
+const {
+  kicker,
+  title,
+  subtitle,
+  breadcrumbs = [],
+  align = 'left',
+} = Astro.props;
+---
+
+<section class="border-b-4 border-[#009FE3] bg-[#003B6D] py-[2.5rem] text-white min-[769px]:py-[3.5rem]">
+  <div class:list={['site-container', align === 'center' && 'text-center']}>
+    {
+      breadcrumbs.length > 0 && (
+        <nav
+          aria-label="Breadcrumb"
+          class:list={[
+            'mb-[1rem] flex flex-wrap items-center gap-[6px] text-[0.82rem] text-[#cbd5e1]',
+            align === 'center' && 'justify-center',
+          ]}
+        >
+          {breadcrumbs.map((crumb, idx) => (
+            <>
+              {idx > 0 && (
+                <ChevronRight
+                  size={13}
+                  stroke-width={2}
+                  class="shrink-0 text-[#94A3B8]"
+                  aria-hidden="true"
+                />
+              )}
+              {crumb.href ? (
+                <a
+                  href={crumb.href}
+                  class="text-[#cbd5e1] transition-colors duration-200 hover:text-[#009FE3]"
+                >
+                  {crumb.label}
+                </a>
+              ) : (
+                <span class="font-semibold text-[#009FE3]">{crumb.label}</span>
+              )}
+            </>
+          ))}
+        </nav>
+      )
+    }
+
+    <span class="mb-[0.65rem] block text-[0.8rem] font-bold uppercase tracking-[1.8px] text-[#009FE3]">
+      {kicker}
+    </span>
+    <h1 class="text-[clamp(1.85rem,4vw,2.8rem)] font-bold leading-[1.15] tracking-[-0.5px] text-white">
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p
+          class:list={[
+            'mt-[0.9rem] max-w-[780px] text-[0.98rem] leading-[1.6] text-[#cbd5e1] min-[769px]:text-[1.05rem]',
+            align === 'center' && 'mx-auto',
+          ]}
+        >
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</section>

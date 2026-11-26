@@ -1,0 +1,60 @@
+---
+import { getImage } from 'astro:assets';
+import HeroCarousel, { type HeroSlide } from '@/components/HeroCarousel';
+import slide1Img from '@/assets/images/hero_pharma_light.jpg';
+import slide2Img from '@/assets/images/product_seal_2_1790081868989.jpg';
+import slide3Img from '@/assets/images/mission_hero_bg.jpg';
+
+const [optSlide1, optSlide2, optSlide3] = await Promise.all([
+  getImage({ src: slide1Img, format: 'webp', quality: 85 }),
+  getImage({ src: slide2Img, format: 'webp', quality: 85 }),
+  getImage({ src: slide3Img, format: 'webp', quality: 85 }),
+]);
+
+const slides: HeroSlide[] = [
+  {
+    id: 'slide-1',
+    imageSrc: optSlide1.src,
+    imageAlt: 'Reliable Industries high-performance mechanical seal inspection',
+    kicker: 'RELY ON EXCELLENCE',
+    titleLine1: 'High-Performance',
+    titleLine2: 'Mechanical Seals.',
+    subtitle:
+      'Providing reliable sealing solutions for industrial rotating equipment worldwide. We offer extensive support in the field of sealing technology as a planning partner, supplier, and service partner.',
+    ctaLabel: 'Learn more',
+    ctaHref: '/about',
+    theme: 'light-pharma',
+    badgeIcon: 'shield',
+  },
+  {
+    id: 'slide-2',
+    imageSrc: optSlide2.src,
+    imageAlt: 'Reliable Industries cartridge mechanical seal assembly',
+    kicker: 'ADVANCED COMPONENTS',
+    titleLine1: 'Comprehensive range of',
+    titleLine2: 'mechanical seals.',
+    subtitle:
+      'From RM Series and Cartridge Seals to Rotary Pressure Joints, we offer Reliable sealing systems for handling extreme and persistent sealing problems.',
+    ctaLabel: 'View Products',
+    ctaHref: '/products',
+    theme: 'cyan-product',
+    badgeIcon: 'plus',
+  },
+  {
+    id: 'slide-3',
+    imageSrc: optSlide3.src,
+    imageAlt: 'Reliable Industries engineering innovation and sealing facility',
+    kicker: 'OUR MISSION',
+    titleLine1: 'Continuous innovations',
+    titleLine2: 'in sealing applications.',
+    subtitle:
+      'Belief in the capabilities of our people to rapidly transfer ideas to reality and a firm faith in promising leak-free, maintenance-free, high quality standard products.',
+    ctaLabel: 'Who We Are',
+    ctaHref: '/about',
+    theme: 'light-mission',
+    badgeIcon: 'star',
+  },
+];
+---
+
+<HeroCarousel client:load slides={slides} />

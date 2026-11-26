@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TBD: Update domain in astro.config.mjs / PUBLIC_SITE_URL before production launch
+Sitemap: https://reliable-industries.example/sitemap-index.xml

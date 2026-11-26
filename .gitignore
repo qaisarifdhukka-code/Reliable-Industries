@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Reference / Prototype archives
+_reference/
+
+# Astro build output & cache
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.log

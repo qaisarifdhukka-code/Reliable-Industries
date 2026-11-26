@@ -1,0 +1,34 @@
+---
+import LegalDocument from '@/components/LegalDocument.astro';
+import { SITE_CONFIG } from '@/config/site';
+
+const sections = [
+  {
+    heading: '1. Worldwide Export Destinations',
+    body: 'Reliable Industries dispatches engineered mechanical seals, replacement seal faces, and auxiliary piping systems to over 50 countries across North America, Europe, the Middle East, Southeast Asia, and Africa.',
+  },
+  {
+    heading: '2. Packaging & Shock Protection',
+    body: 'Mechanical seal silicon carbide and tungsten carbide faces are ultra-sensitive precision components. All products are vacuum-sealed with anti-corrosion VCI barrier wrap, encased in dense shock-absorbing polyurethane foam, and crated in heavy-duty export-certified fumigated ISPM-15 wooden boxes.',
+  },
+  {
+    heading: '3. Emergency Turnaround Air Freight',
+    body: 'For critical plant breakdowns and emergency shutdowns, we provide expedited international express courier dispatch (via DHL, FedEx, or dedicated Air Cargo) with dispatch within 24 to 48 hours for standard units.',
+  },
+  {
+    heading: '4. Tracking & Customs Documentation',
+    body: 'Complete export documentation—including Commercial Invoice, Certificate of Origin, Packing List, and airway bill/bill of lading tracking—is electronically provided immediately upon dispatch.',
+  },
+];
+---
+
+<LegalDocument
+  seoTitle={`Shipping & Dispatch Policy | ${SITE_CONFIG.brandName}`}
+  seoDescription="Global logistics, packaging standards, and international freight dispatch policies of Reliable Industries mechanical seals and systems."
+  kicker="GLOBAL LOGISTICS & DISPATCH"
+  pageTitle="Shipping & Delivery Policy"
+  subtitle="Ensuring secure packaging, rapid air & sea freight customs clearance, and zero-damage global delivery."
+  breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Shipping Policy' }]}
+  sections={sections}
+  footerNoticeHtml={`<strong>Need tracking for an active order?</strong> Contact our logistics desk at <a href="mailto:${SITE_CONFIG.businessDetails.departmentEmails.dispatch}" class="font-semibold text-[#009FE3] hover:text-[#003B6D]">${SITE_CONFIG.businessDetails.departmentEmails.dispatch}</a> or call <a href="tel:+917888065559" class="font-semibold text-[#009FE3] hover:text-[#003B6D]">+91- 78880 65559</a>.`}
+/>
