@@ -345,13 +345,13 @@ export default function DesktopNav({
                           className="group flex items-center gap-3 rounded-[2px] border border-[#e2e8f0] bg-white p-2.5 transition-colors duration-200 hover:border-[#009FE3] hover:bg-[#F4F6F8]/60"
                         >
                           {prod.thumbSrc && (
-                            <div className="h-[48px] w-[48px] shrink-0 overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8]">
+                            <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-1">
                               <img
                                 src={prod.thumbSrc}
                                 alt={prod.name}
                                 loading="lazy"
                                 decoding="async"
-                                className="block h-full w-full object-cover object-center"
+                                className="h-full w-full object-contain"
                               />
                             </div>
                           )}

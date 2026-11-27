@@ -83,14 +83,14 @@ const customSuperGroups = PRODUCT_SUPER_CATEGORIES.filter(
 
                   return (
                     <article class="flex flex-col items-center rounded-[2px] border border-[#dce4ec] bg-white p-[1.25rem] pb-[1.5rem] text-center shadow-[0_4px_20px_rgba(0,43,73,0.06)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-[4px] hover:shadow-[0_12px_28px_rgba(0,43,73,0.1)]">
-                      <div class="aspect-[4/3] w-full overflow-hidden rounded-[2px] border border-[#e6ebf1] bg-[#F4F6F8]">
+                      <div class="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e6ebf1] bg-[#F4F6F8] p-[0.65rem]">
                         <Image
                           src={coverImage}
                           alt={cat.title}
                           width={520}
                           format="webp"
                           quality={85}
-                          class="block h-full w-full object-cover object-center"
+                          class="h-full w-full object-contain"
                         />
                       </div>
 
