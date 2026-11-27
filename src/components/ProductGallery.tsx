@@ -38,7 +38,7 @@ export default function ProductGallery({ slides }: ProductGalleryProps) {
       <div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-[1.25rem] min-[769px]:cursor-crosshair min-[769px]:max-h-[430px]"
+        className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] min-[769px]:cursor-crosshair min-[769px]:max-h-[430px]"
       >
         <img
           src={current.src}
@@ -47,7 +47,7 @@ export default function ProductGallery({ slides }: ProductGalleryProps) {
             transformOrigin: zoomOrigin,
             transform: isZoomed ? 'scale(1.85)' : 'scale(1)',
           }}
-          className="h-full w-full object-contain transition-transform duration-150 ease-out"
+          className="block h-full w-full object-cover object-center transition-transform duration-150 ease-out"
         />
       </div>
 
@@ -64,11 +64,10 @@ export default function ProductGallery({ slides }: ProductGalleryProps) {
                   setIsZoomed(false);
                 }}
                 aria-pressed={isSelected}
-                className={`inline-flex min-h-[40px] cursor-pointer items-center gap-[7px] rounded-[2px] border-2 px-[0.9rem] py-[0.45rem] text-[0.84rem] font-semibold transition-colors duration-200 ${
-                  isSelected
-                    ? 'border-[#009FE3] bg-white text-[#003B6D]'
-                    : 'border-[#e2e8f0] bg-[#F4F6F8] text-[#475569] hover:border-[#009FE3]'
-                }`}
+                className={`inline-flex min-h-[40px] cursor-pointer items-center gap-[7px] rounded-[2px] border-2 px-[0.9rem] py-[0.45rem] text-[0.84rem] font-semibold transition-colors duration-200 ${isSelected
+                  ? 'border-[#009FE3] bg-white text-[#003B6D]'
+                  : 'border-[#e2e8f0] bg-[#F4F6F8] text-[#475569] hover:border-[#009FE3]'
+                  }`}
               >
                 {slide.type === 'diagram' ? (
                   <Ruler

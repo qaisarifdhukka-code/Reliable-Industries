@@ -140,22 +140,20 @@ export default function DesktopNav({
                   onClick={() =>
                     setOpenMenuId((prev) => (prev === menu.id ? null : menu.id))
                   }
-                  className={`relative flex cursor-pointer items-center gap-[4px] border-none bg-transparent p-0 text-[0.95rem] font-semibold transition-colors duration-300 max-[960px]:text-[0.88rem] ${
-                    isActive
-                      ? 'text-[#009FE3] before:absolute before:-top-[12.8px] before:left-0 before:h-[4px] before:w-full before:bg-[#009FE3] before:content-[""]'
-                      : isOpen
-                        ? 'text-[#009FE3]'
-                        : 'text-[#003B6D] hover:text-[#009FE3]'
-                  }`}
+                  className={`relative flex cursor-pointer items-center gap-[4px] border-none bg-transparent p-0 text-[0.95rem] font-semibold transition-colors duration-300 max-[960px]:text-[0.88rem] ${isActive
+                    ? 'text-[#009FE3] before:absolute before:-top-[12.8px] before:left-0 before:h-[4px] before:w-full before:bg-[#009FE3] before:content-[""]'
+                    : isOpen
+                      ? 'text-[#009FE3]'
+                      : 'text-[#003B6D] hover:text-[#009FE3]'
+                    }`}
                 >
                   <span>{menu.label}</span>
                   <ChevronDown
                     size={12}
                     strokeWidth={2.2}
                     aria-hidden="true"
-                    className={`mt-[1px] shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#009FE3]' : ''
-                    } ${isActive ? 'text-[#009FE3]' : 'text-[#94A3B8]'}`}
+                    className={`mt-[1px] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#009FE3]' : ''
+                      } ${isActive ? 'text-[#009FE3]' : 'text-[#94A3B8]'}`}
                   />
                 </button>
               </li>
@@ -256,11 +254,10 @@ export default function DesktopNav({
                               type="button"
                               onMouseEnter={() => handleSelectSuper(superCat)}
                               onClick={() => handleSelectSuper(superCat)}
-                              className={`flex w-full cursor-pointer items-center justify-between rounded-[4px] px-3 py-2 text-left text-[0.86rem] transition-colors duration-200 ${
-                                isSelected
-                                  ? 'bg-[#009FE3] font-bold text-white'
-                                  : 'font-medium text-[#cbd5e1] hover:bg-white/10 hover:text-white'
-                              }`}
+                              className={`flex w-full cursor-pointer items-center justify-between rounded-[4px] px-3 py-2 text-left text-[0.86rem] transition-colors duration-200 ${isSelected
+                                ? 'bg-[#009FE3] font-bold text-white'
+                                : 'font-medium text-[#cbd5e1] hover:bg-white/10 hover:text-white'
+                                }`}
                             >
                               <span>{superCat.title}</span>
                               <ChevronRight
@@ -306,11 +303,10 @@ export default function DesktopNav({
                             type="button"
                             onMouseEnter={() => setActiveSubId(sub.id)}
                             onClick={() => setActiveSubId(sub.id)}
-                            className={`flex w-full cursor-pointer items-center justify-between rounded-[2px] px-3 py-2 text-left text-[0.86rem] transition-colors duration-200 ${
-                              isSelected
-                                ? 'bg-[#F4F6F8] font-semibold text-[#003B6D]'
-                                : 'text-[#334155] hover:bg-[#F4F6F8]/60 hover:text-[#003B6D]'
-                            }`}
+                            className={`flex w-full cursor-pointer items-center justify-between rounded-[2px] px-3 py-2 text-left text-[0.86rem] transition-colors duration-200 ${isSelected
+                              ? 'bg-[#F4F6F8] font-semibold text-[#003B6D]'
+                              : 'text-[#334155] hover:bg-[#F4F6F8]/60 hover:text-[#003B6D]'
+                              }`}
                           >
                             <span>{sub.title}</span>
                             <ChevronRight
@@ -349,13 +345,13 @@ export default function DesktopNav({
                           className="group flex items-center gap-3 rounded-[2px] border border-[#e2e8f0] bg-white p-2.5 transition-colors duration-200 hover:border-[#009FE3] hover:bg-[#F4F6F8]/60"
                         >
                           {prod.thumbSrc && (
-                            <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-1">
+                            <div className="h-[48px] w-[48px] shrink-0 overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8]">
                               <img
                                 src={prod.thumbSrc}
                                 alt={prod.name}
                                 loading="lazy"
                                 decoding="async"
-                                className="h-full w-full object-contain"
+                                className="block h-full w-full object-cover object-center"
                               />
                             </div>
                           )}
@@ -421,11 +417,10 @@ export default function DesktopNav({
                   )}
 
                   <div
-                    className={`grid gap-6 py-1 ${
-                      (currentMenu.columns?.length ?? 1) > 1
-                        ? 'grid-cols-2'
-                        : 'grid-cols-1'
-                    }`}
+                    className={`grid gap-6 py-1 ${(currentMenu.columns?.length ?? 1) > 1
+                      ? 'grid-cols-2'
+                      : 'grid-cols-1'
+                      }`}
                   >
                     {currentMenu.columns?.map((col) => (
                       <div key={col.columnTitle}>

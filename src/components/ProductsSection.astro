@@ -64,13 +64,13 @@ const productCards: ProductCardItem[] = [
       {
         productCards.map((card) => (
           <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)] transition-[transform,box-shadow] duration-300 ease-in-out max-[768px]:w-[84%] max-[768px]:shrink-0 max-[768px]:snap-start hover:-translate-y-[5px] hover:shadow-[0_12px_30px_rgba(0,43,73,0.1)]">
-            <div class="flex h-[190px] items-center justify-center bg-white p-[1.5rem] min-[641px]:h-[220px] min-[641px]:p-[2rem]">
+            <div class="h-[190px] w-full overflow-hidden bg-[#F4F6F8] min-[641px]:h-[220px]">
               <Image
                 src={card.image}
                 alt={card.imageAlt}
                 format="webp"
                 quality={85}
-                class="h-auto max-h-full w-auto max-w-full object-contain"
+                class="block h-full w-full object-cover object-center"
               />
             </div>
             <div class="flex grow flex-col border-t border-[#F4F6F8] p-[1.5rem]">
