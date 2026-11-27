@@ -105,15 +105,17 @@ const { group, products } = Astro.props;
               const primaryImg = getPrimaryImageMeta(prod);
               return (
                 <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white shadow-[0_4px_20px_rgba(0,43,73,0.05)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-[4px] hover:shadow-[0_12px_28px_rgba(0,43,73,0.1)]">
-                  <div class="aspect-[4/3] w-full overflow-hidden border-b border-[#F4F6F8] bg-white">
-                    <Image
-                      src={primaryImg}
-                      alt={prod.name}
-                      width={560}
-                      format="webp"
-                      quality={85}
-                      class="h-full w-full object-contain mix-blend-multiply"
-                    />
+                  <div class="p-[1.25rem] pb-0">
+                    <div class="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e6ebf1] bg-[#F4F6F8] p-[0.75rem]">
+                      <Image
+                        src={primaryImg}
+                        alt={prod.name}
+                        width={560}
+                        format="webp"
+                        quality={85}
+                        class="h-full w-full object-contain"
+                      />
+                    </div>
                   </div>
 
                   <div class="flex grow flex-col p-[1.25rem]">

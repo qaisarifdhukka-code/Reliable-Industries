@@ -38,7 +38,7 @@ export default function ProductGallery({ slides }: ProductGalleryProps) {
       <div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-white p-0 min-[769px]:cursor-crosshair min-[769px]:max-h-[430px]"
+        className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-[1.25rem] min-[769px]:cursor-crosshair min-[769px]:max-h-[430px]"
       >
         <img
           src={current.src}
@@ -47,7 +47,7 @@ export default function ProductGallery({ slides }: ProductGalleryProps) {
             transformOrigin: zoomOrigin,
             transform: isZoomed ? 'scale(1.85)' : 'scale(1)',
           }}
-          className="h-full w-full object-contain mix-blend-multiply transition-transform duration-150 ease-out"
+          className="h-full w-full object-contain transition-transform duration-150 ease-out"
         />
       </div>
 
