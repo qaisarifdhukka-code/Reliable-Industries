@@ -13,6 +13,7 @@ export interface NavProductItem {
   categorySlug: string;
   slug: string;
   href: string;
+  thumbSrc?: string;
   specs: NavSpec[];
 }
 

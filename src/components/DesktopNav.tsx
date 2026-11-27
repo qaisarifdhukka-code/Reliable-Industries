@@ -346,26 +346,33 @@ export default function DesktopNav({
                           key={prod.id}
                           href={prod.href}
                           onClick={() => setOpenMenuId(null)}
-                          className="group flex flex-col justify-between rounded-[2px] border border-[#e2e8f0] bg-white p-2.5 transition-colors duration-200 hover:border-[#009FE3] hover:bg-[#F4F6F8]/50"
+                          className="group flex items-center gap-3 rounded-[2px] border border-[#e2e8f0] bg-white p-2.5 transition-colors duration-200 hover:border-[#009FE3] hover:bg-[#F4F6F8]/60"
                         >
-                          <span className="text-[0.84rem] font-semibold leading-[1.35] text-[#003B6D] group-hover:text-[#009FE3]">
-                            {prod.name}
-                          </span>
-                          {prod.specs.length > 0 && (
-                            <div className="mt-1.5 flex flex-wrap gap-1.5">
-                              {prod.specs.map((spec) => (
-                                <span
-                                  key={`${prod.id}-${spec.label}`}
-                                  className="rounded-[2px] bg-[#F4F6F8] px-1.5 py-0.5 text-[0.7rem] text-[#475569]"
-                                >
-                                  <strong className="font-semibold text-[#003B6D]">
-                                    {spec.label}:
-                                  </strong>{' '}
-                                  {spec.value}
-                                </span>
-                              ))}
+                          {prod.thumbSrc && (
+                            <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#F4F6F8] p-1">
+                              <img
+                                src={prod.thumbSrc}
+                                alt={prod.name}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-contain"
+                              />
                             </div>
                           )}
+                          <div className="min-w-0 flex-1">
+                            <span className="block text-[0.83rem] font-semibold leading-[1.3] text-[#003B6D] group-hover:text-[#009FE3]">
+                              {prod.name}
+                            </span>
+                            <span className="mt-0.5 block text-[0.7rem] font-medium text-[#64748b] group-hover:text-[#009FE3]">
+                              View specifications
+                            </span>
+                          </div>
+                          <ChevronRight
+                            size={14}
+                            strokeWidth={2}
+                            className="shrink-0 text-[#94A3B8] transition-colors group-hover:text-[#009FE3]"
+                            aria-hidden="true"
+                          />
                         </a>
                       ))}
                     </div>

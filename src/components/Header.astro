@@ -1,8 +1,10 @@
 ---
+import { getImage } from 'astro:assets';
 import { SITE_CONFIG } from '@/config/site';
 import AccreditationBadges from '@/components/AccreditationBadges.astro';
 import DesktopNav from '@/components/DesktopNav';
 import MobileNav from '@/components/MobileNav';
+import { CATALOG_PRODUCTS, getPrimaryImageMeta } from '@/data/catalog';
 import {
   BROCHURE_LINK,
   PRODUCT_SUPER_CATEGORIES,
@@ -11,6 +13,30 @@ import {
   UTILITY_LINKS,
   type TopMenuConfig,
 } from '@/data/navigation';
+
+const navThumbEntries = await Promise.all(
+  CATALOG_PRODUCTS.map(async (prod) => {
+    const opt = await getImage({
+      src: getPrimaryImageMeta(prod),
+      width: 120,
+      format: 'webp',
+      quality: 80,
+    });
+    return [prod.id, opt.src] as const;
+  })
+);
+const navThumbById = new Map<number | string, string>(navThumbEntries);
+
+const enrichedSuperCategories = PRODUCT_SUPER_CATEGORIES.map((superCat) => ({
+  ...superCat,
+  subcategories: superCat.subcategories.map((sub) => ({
+    ...sub,
+    products: sub.products.map((prod) => ({
+      ...prod,
+      thumbSrc: navThumbById.get(prod.id),
+    })),
+  })),
+}));
 
 const pathname = Astro.url.pathname;
 let activeMenuId: TopMenuConfig['id'] | null = 'products';
@@ -61,7 +87,7 @@ if (pathname.startsWith('/industries')) {
     <DesktopNav
       client:media="(min-width: 769px)"
       menus={TOP_NAV_MENUS}
-      superCategories={PRODUCT_SUPER_CATEGORIES}
+      superCategories={enrichedSuperCategories}
       searchProducts={SEARCHABLE_PRODUCTS}
       brochureHref={BROCHURE_LINK.href}
       brochureDownload={BROCHURE_LINK.download}
