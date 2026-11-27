@@ -82,31 +82,33 @@ const customSuperGroups = PRODUCT_SUPER_CATEGORIES.filter(
                       : `/products/${cat.slug}`;
 
                   return (
-                    <article class="flex flex-col items-center rounded-[2px] border border-[#dce4ec] bg-white p-[1.25rem] pb-[1.5rem] text-center shadow-[0_4px_20px_rgba(0,43,73,0.06)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-[4px] hover:shadow-[0_12px_28px_rgba(0,43,73,0.1)]">
-                      <div class="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2px] border border-[#e6ebf1] bg-[#F4F6F8] p-[0.65rem]">
+                    <article class="flex flex-col overflow-hidden rounded-[2px] border border-[#dce4ec] bg-white text-center shadow-[0_4px_20px_rgba(0,43,73,0.06)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-[4px] hover:shadow-[0_12px_28px_rgba(0,43,73,0.1)]">
+                      <div class="aspect-[4/3] w-full overflow-hidden border-b border-[#F4F6F8] bg-white">
                         <Image
                           src={coverImage}
                           alt={cat.title}
                           width={520}
                           format="webp"
                           quality={85}
-                          class="h-full w-full object-contain"
+                          class="h-full w-full object-contain mix-blend-multiply"
                         />
                       </div>
 
-                      <h3 class="mt-[1.15rem] text-[0.95rem] font-bold uppercase leading-[1.3] tracking-[0.3px] text-[#003B6D]">
-                        {cat.title}
-                      </h3>
-                      <p class="mt-[0.3rem] text-[0.85rem] text-[#64748b]">
-                        {products.length} {products.length === 1 ? 'Series' : 'Series Available'}
-                      </p>
-                      <a
-                        href={targetHref}
-                        class="mt-auto inline-flex items-center justify-center gap-[5px] pt-[0.8rem] pb-[0.15rem] text-[0.8rem] font-bold uppercase tracking-[0.6px] text-[#009FE3] transition-colors duration-200 hover:text-[#003B6D]"
-                      >
-                        <span>Explore Series</span>
-                        <ArrowRight size={14} stroke-width={2.5} aria-hidden="true" />
-                      </a>
+                      <div class="flex grow flex-col items-center px-[1.25rem] pt-[1rem] pb-[1.5rem]">
+                        <h3 class="text-[0.95rem] font-bold uppercase leading-[1.3] tracking-[0.3px] text-[#003B6D]">
+                          {cat.title}
+                        </h3>
+                        <p class="mt-[0.3rem] text-[0.85rem] text-[#64748b]">
+                          {products.length} {products.length === 1 ? 'Series' : 'Series Available'}
+                        </p>
+                        <a
+                          href={targetHref}
+                          class="mt-auto inline-flex items-center justify-center gap-[5px] pt-[0.8rem] pb-[0.15rem] text-[0.8rem] font-bold uppercase tracking-[0.6px] text-[#009FE3] transition-colors duration-200 hover:text-[#003B6D]"
+                        >
+                          <span>Explore Series</span>
+                          <ArrowRight size={14} stroke-width={2.5} aria-hidden="true" />
+                        </a>
+                      </div>
                     </article>
                   );
                 })}
