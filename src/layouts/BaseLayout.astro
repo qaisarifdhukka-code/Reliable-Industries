@@ -4,6 +4,7 @@ import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@/styles/global.css';
+import FloatingActions from '@/components/FloatingActions.astro';
 import SeoHead, { type Props as SeoProps } from '@/components/seo/SeoHead.astro';
 
 export interface Props extends SeoProps {}
@@ -25,5 +26,6 @@ const seoProps = Astro.props;
       Skip to main content
     </a>
     <slot />
+    <FloatingActions />
   </body>
 </html>
