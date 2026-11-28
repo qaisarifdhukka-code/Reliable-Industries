@@ -12,7 +12,7 @@ const { class: className = '' } = Astro.props;
 
 <div
   class:list={[
-    'flex items-center gap-[9px] max-[480px]:gap-[7px]',
+    'flex items-center gap-[12px] max-[480px]:gap-[5px]',
     className,
   ]}
   aria-label="QRO, EGAC Accredited, and IAF ISO 9001:2015 Certifications"
@@ -20,19 +20,21 @@ const { class: className = '' } = Astro.props;
   <Image
     src={qroLogo}
     alt="QRO — Quality Research Organization"
-    height={60}
+    height={96}
+    quality={95}
     format="png"
     loading="eager"
-    class="h-[24px] w-auto shrink-0 object-contain max-[480px]:h-[20px]"
+    class="h-[34px] w-auto shrink-0 object-contain max-[480px]:h-[16px]"
   />
 
   <Image
     src={egacLogo}
     alt="EGAC Accredited"
-    height={60}
+    height={96}
+    quality={95}
     format="png"
     loading="eager"
-    class="h-[24px] w-auto shrink-0 object-contain max-[480px]:h-[20px]"
+    class="h-[34px] w-auto shrink-0 object-contain max-[480px]:h-[16px]"
   />
 
   <img
@@ -42,10 +44,10 @@ const { class: className = '' } = Astro.props;
     height="95"
     loading="eager"
     decoding="async"
-    class="h-[24px] w-auto shrink-0 object-contain max-[480px]:h-[20px]"
+    class="h-[34px] w-auto shrink-0 object-contain max-[480px]:h-[16px]"
   />
 
-  <span class="border-l border-[#cbd5e1] pl-[8px] text-[0.62rem] font-bold tracking-[0.4px] whitespace-nowrap text-[#334155] max-[480px]:hidden">
+  <span class="border-l border-[#cbd5e1] pl-[10px] text-[0.75rem] font-bold tracking-[0.4px] whitespace-nowrap text-[#334155] max-[480px]:pl-[4px] max-[480px]:text-[0.45rem]">
     ISO 9001 : 2015
   </span>
 </div>

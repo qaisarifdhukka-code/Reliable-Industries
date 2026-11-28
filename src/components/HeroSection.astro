@@ -1,9 +1,9 @@
 ---
 import { getImage } from 'astro:assets';
 import HeroCarousel, { type HeroSlide } from '@/components/HeroCarousel';
-import slide1Img from '@/assets/images/hero_pharma_light.jpg';
-import slide2Img from '@/assets/images/product_seal_2_1790081868989.jpg';
-import slide3Img from '@/assets/images/mission_hero_bg.jpg';
+import slide1Img from '@/assets/images/hero_seal_plant_1.jpg';
+import slide2Img from '@/assets/images/hero_seal_plant_2.jpg';
+import slide3Img from '@/assets/images/hero_seal_plant_3.jpg';
 
 const [optSlide1, optSlide2, optSlide3] = await Promise.all([
   getImage({ src: slide1Img, format: 'webp', quality: 85 }),

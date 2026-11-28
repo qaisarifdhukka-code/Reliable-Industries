@@ -411,10 +411,7 @@ export const TOP_NAV_MENUS: TopMenuConfig[] = [
         columnTitle: 'About Us',
         links: [
           { title: 'Our History', href: '/about' },
-          { title: 'Management Team', href: '/management-team' },
           { title: 'Certifications', href: '/certifications' },
-          { title: 'News & Press', href: '/news-press' },
-          { title: 'Events & Trade Fairs', href: '/events-trade-fairs' },
         ],
       },
     ],

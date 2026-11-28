@@ -219,3 +219,32 @@ export function getRelatedProducts(product: CatalogProduct): CatalogProduct[] {
   );
   return byCategory.length > 0 ? byCategory : [product];
 }
+
+const MANUAL_CODE_BY_ID: Record<number, string> = {
+  1: 'RAG REB2 DRY / WET',
+  2: 'RAGT RM20WB / RM20W',
+  5: 'RM90',
+  6: 'RS20W',
+  7: 'RMB1',
+  8: 'RMB2',
+  9: 'RTS2',
+  11: 'RSO / RSV',
+  12: 'RS18 / RS18W',
+  33: 'RM20 / RM20W',
+  34: 'RM20B / RM20WB',
+  35: 'RDMO / RDMV',
+  36: 'RTM-40 / RTM-20',
+  37: 'REB2',
+  39: 'RS18B / RS18WB',
+  40: 'RSSO / RSSV',
+  41: 'RSGO / RSGV',
+};
+
+export function getProductEngineeringCode(prod: CatalogProduct): string | null {
+  const manual = MANUAL_CODE_BY_ID[Number(prod.id)];
+  if (manual) return manual;
+  const engView = prod.galleryFiles?.find((g) => g.label === 'Engineering View');
+  if (!engView?.file) return null;
+  const match = engView.file.match(/(R[A-Z]{1,4}\s*-?\s*\d+[A-Z0-9-]*)/i);
+  return match ? match[1].toUpperCase() : null;
+}

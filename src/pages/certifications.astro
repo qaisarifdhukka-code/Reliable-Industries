@@ -6,7 +6,27 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import { SITE_CONFIG } from '@/config/site';
-import { CERTIFICATION_CARDS_DETAIL } from '@/data/companyData';
+
+const certificates = [
+  {
+    badge: 'QRO • EGAC • IAF',
+    title: 'ISO 9001:2015 — QRO Certification (2024–2027)',
+    description:
+      'Certificate No. 3050240618172Q. Manufacturer and supplier of mechanical shaft seals, rotary joints and related spares.',
+    status: 'Valid 2024–2027',
+    pdfUrl: '/certificates/iso-9001-2024-2027.pdf',
+    accent: 'cyan' as const,
+  },
+  {
+    badge: 'QACS INTERNATIONAL • IAS • IAF',
+    title: 'ISO 9001:2015 — QACS International (Up to 2024)',
+    description:
+      'Certificate No. QAIS-Q-RI-05.18.036 (EA Code: 18). Manufacturer and supplier of mechanical shaft seals, rotary joints and related spares.',
+    status: 'Valid Up to 2024',
+    pdfUrl: '/certificates/iso-9001-up-to-2024.pdf',
+    accent: 'navy' as const,
+  },
+];
 ---
 
 <BaseLayout
@@ -26,9 +46,9 @@ import { CERTIFICATION_CARDS_DETAIL } from '@/data/companyData';
 
     <section class="bg-[#F4F6F8] py-[3.5rem] min-[769px]:py-[5rem]">
       <div class="site-container">
-        <div class="grid grid-cols-1 gap-[1.5rem] min-[577px]:grid-cols-2 min-[1025px]:grid-cols-3">
+        <div class="grid grid-cols-1 gap-[2rem] min-[769px]:grid-cols-2">
           {
-            CERTIFICATION_CARDS_DETAIL.map((cert) => {
+            certificates.map((cert) => {
               const isCyan = cert.accent === 'cyan';
               return (
                 <article
@@ -62,17 +82,31 @@ import { CERTIFICATION_CARDS_DETAIL } from '@/data/companyData';
                     <p class="mb-[1.25rem] text-[0.92rem] leading-[1.6] text-[#334155]">
                       {cert.description}
                     </p>
+                    <a
+                      href={cert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mb-[1.25rem] block aspect-[1/1.414] w-full overflow-hidden rounded-[2px] border border-[#e2e8f0] bg-[#f8fafc]"
+                    >
+                      <iframe
+                        src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                        title={cert.title}
+                        class="pointer-events-none h-full w-full border-0"
+                        loading="lazy"
+                      />
+                    </a>
                   </div>
 
                   <div class="flex items-center justify-between border-t border-[#e2e8f0] pt-[1rem] text-[0.82rem]">
                     <span class="font-semibold text-[#003B6D]">{cert.status}</span>
                     <a
-                      href={SITE_CONFIG.brochurePath}
-                      download={SITE_CONFIG.brochureDownloadName}
+                      href={cert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       class="inline-flex items-center gap-[5px] font-bold text-[#009FE3] transition-colors hover:text-[#003B6D]"
                     >
                       <FileDown size={14} stroke-width={2} aria-hidden="true" />
-                      <span>Download PDF</span>
+                      <span>View / Download PDF</span>
                     </a>
                   </div>
                 </article>

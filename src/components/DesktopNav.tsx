@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, ChevronRight, FileDown, Search } from 'lucide-react';
+import CatalogueDownloadModal from '@/components/CatalogueDownloadModal';
 import type {
   NavProductItem,
   NavSuperCategory,
@@ -24,6 +25,14 @@ export default function DesktopNav({
   activeMenuId = 'products',
 }: DesktopNavProps) {
   const [openMenuId, setOpenMenuId] = useState<TopMenuConfig['id'] | null>(null);
+  const [catalogueModalOpen, setCatalogueModalOpen] = useState(false);
+  const [catalogueTarget, setCatalogueTarget] = useState<{
+    href: string;
+    name: string;
+  }>({
+    href: '/brochures/mech-seal-catalogue.pdf',
+    name: 'Reliable-Industries-Mech-Seal-Catalogue.pdf',
+  });
   const [activeSuperId, setActiveSuperId] = useState<string>(
     superCategories[0]?.id ?? 'mechanical-seal'
   );
@@ -375,15 +384,32 @@ export default function DesktopNav({
                   </div>
 
                   <div className="mt-4 flex items-center justify-between border-t border-[#e2e8f0] pt-3">
-                    <a
-                      href={brochureHref}
-                      download={brochureDownload}
-                      onClick={() => setOpenMenuId(null)}
-                      className="inline-flex items-center gap-2 text-[0.84rem] font-semibold text-[#003B6D] transition-colors duration-200 hover:text-[#009FE3]"
-                    >
-                      <FileDown size={16} strokeWidth={2} aria-hidden="true" />
-                      <span>Download Technical Catalogue (PDF)</span>
-                    </a>
+                    {!['Seal Support System', 'Bearing Isolators', 'Spares'].includes(
+                      activeSuper?.title ?? ''
+                    ) ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const isRotary = activeSuper?.title === 'Rotary Joints';
+                          setCatalogueTarget({
+                            href: isRotary
+                              ? '/brochures/Reliable Rotary joint.pdf'
+                              : '/brochures/mech-seal-catalogue.pdf',
+                            name: isRotary
+                              ? 'Reliable-Industries-Rotary-Joints-Catalogue.pdf'
+                              : 'Reliable-Industries-Mech-Seal-Catalogue.pdf',
+                          });
+                          setOpenMenuId(null);
+                          setCatalogueModalOpen(true);
+                        }}
+                        className="inline-flex cursor-pointer items-center gap-2 text-[0.84rem] font-semibold text-[#003B6D] transition-colors duration-200 hover:text-[#009FE3]"
+                      >
+                        <FileDown size={16} strokeWidth={2} aria-hidden="true" />
+                        <span>Download Technical Catalogue (PDF)</span>
+                      </button>
+                    ) : (
+                      <span />
+                    )}
                     <span className="text-[0.75rem] text-[#64748b]">
                       Standard &amp; custom specifications available
                     </span>
@@ -455,6 +481,12 @@ export default function DesktopNav({
           </div>
         </div>
       )}
+      <CatalogueDownloadModal
+        isOpen={catalogueModalOpen}
+        onClose={() => setCatalogueModalOpen(false)}
+        pdfHref={catalogueTarget.href}
+        pdfDownloadName={catalogueTarget.name}
+      />
     </div>
   );
 }

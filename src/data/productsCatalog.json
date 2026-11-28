@@ -620,90 +620,6 @@
     ]
   },
   {
-    "id": 18,
-    "name": "RMF - CH - 60 - MONOFLOW ROTATING UNION",
-    "shortName": "RMF - CH - 60 - MONOFLOW ROTATING UNION",
-    "category": "Water Rotary Joints",
-    "categorySlug": "water-rotary-joints",
-    "slug": "rmf-ch-60-this-is-monoflow-rotating-union-18",
-    "description": "A reliable sealing solution engineered for maximum efficiency and durability in industrial applications.",
-    "features": [
-      "Direction: Right Hand & Left Hand Thread"
-    ],
-    "specs": {
-      "Thread": "NPT, BSP, UNF, MM",
-      "Rotary joint size available": "3/4” to 2”",
-      "Media": "Chilled Water",
-      "Temperature range": "0°C to 80°C",
-      "Pressure": "0 to 5 kg/cm²",
-      "Moc of body": "Forged Cast Steel, SS 304, SS 316",
-      "Rotor": "SS 304, SS 316, Cast Steel",
-      "Bearing": "SKF/FAG, Steel Cage, Rubber Cage",
-      "Rpm": "1000 to 1200",
-      "Face combination": "Carbon, Silicon Carbide, Tungsten Carbide, Ceramic, Stellite, Recralloy with surface finish",
-      "Eye bolts": "SS 304, Cast Steel for alignment of rotary union"
-    },
-    "badgeSpecs": [
-      {
-        "label": "Size",
-        "value": "3/4” to 2”"
-      },
-      {
-        "label": "Temp",
-        "value": "0°C to 80°C"
-      }
-    ],
-    "galleryFiles": [
-      {
-        "file": "chillwaterone.png",
-        "label": "Product Photo",
-        "type": "photo"
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "name": "RDF - CH - 80 - DEOFLOW ROTATING UNION",
-    "shortName": "RDF - CH - 80 - DEOFLOW ROTATING UNION",
-    "category": "Water Rotary Joints",
-    "categorySlug": "water-rotary-joints",
-    "slug": "rdf-ch-80-this-is-deofolw-rotating-union-19",
-    "description": "A reliable sealing solution engineered for maximum efficiency and durability in industrial applications.",
-    "features": [
-      "Direction: Right Hand & Left Hand Thread"
-    ],
-    "specs": {
-      "Thread": "NPT, BSP, UNF, MM",
-      "Media": "Chilled Water",
-      "Temperature range": "0°C to 80°C",
-      "Pressure": "0 to 5 kg/cm²",
-      "Moc of body": "Forged Cast Steel, SS 304, SS 316",
-      "Rotor": "SS 304, SS 316, Cast Steel",
-      "Bearing": "SKF / FAG, Steel Cage, Rubber Cage",
-      "Rpm": "1000 to 1200",
-      "Face combination": "Carbon, Silicon Carbide, Tungsten Carbide, Ceramic, Stellite, Recralloy",
-      "Siphon elbow": "Available in SS 304 / Cast Steel with screwed or rotating siphon pipe",
-      "Siphon pipe direction": "Right Hand or Left Hand"
-    },
-    "badgeSpecs": [
-      {
-        "label": "Temp",
-        "value": "0°C to 80°C"
-      },
-      {
-        "label": "Press",
-        "value": "0 to 5 kg/cm²"
-      }
-    ],
-    "galleryFiles": [
-      {
-        "file": "chillwatertwo.png",
-        "label": "Product Photo",
-        "type": "photo"
-      }
-    ]
-  },
-  {
     "id": 20,
     "name": "RMF-FL 100 - MONOFLOW ROTATING UNION FLANGED END",
     "shortName": "RMF-FL 100 - MONOFLOW ROTATING UNION FLANGED END",
@@ -743,7 +659,7 @@
     ],
     "galleryFiles": [
       {
-        "file": "manflowrotating_4.png",
+        "file": "120_deofoldrotating.png",
         "label": "Product Photo",
         "type": "photo"
       }
@@ -790,7 +706,91 @@
     ],
     "galleryFiles": [
       {
-        "file": "120_deofoldrotating.png",
+        "file": "manflowrotating_4.png",
+        "label": "Product Photo",
+        "type": "photo"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "RMF - CH - 60 - MONOFLOW ROTATING UNION",
+    "shortName": "RMF - CH - 60 - MONOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rmf-ch-60-this-is-monoflow-rotating-union-18",
+    "description": "A reliable sealing solution engineered for maximum efficiency and durability in industrial applications.",
+    "features": [
+      "Direction: Right Hand & Left Hand Thread"
+    ],
+    "specs": {
+      "Thread": "NPT, BSP, UNF, MM",
+      "Rotary joint size available": "3/4” to 2”",
+      "Media": "Chilled Water",
+      "Temperature range": "0°C to 80°C",
+      "Pressure": "0 to 5 kg/cm²",
+      "Moc of body": "Forged Cast Steel, SS 304, SS 316",
+      "Rotor": "SS 304, SS 316, Cast Steel",
+      "Bearing": "SKF/FAG, Steel Cage, Rubber Cage",
+      "Rpm": "1000 to 1200",
+      "Face combination": "Carbon, Silicon Carbide, Tungsten Carbide, Ceramic, Stellite, Recralloy with surface finish",
+      "Eye bolts": "SS 304, Cast Steel for alignment of rotary union"
+    },
+    "badgeSpecs": [
+      {
+        "label": "Size",
+        "value": "3/4” to 2”"
+      },
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      }
+    ],
+    "galleryFiles": [
+      {
+        "file": "rmf_ch_60.png",
+        "label": "Product Photo",
+        "type": "photo"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "RDF - CH - 80 - DEOFLOW ROTATING UNION",
+    "shortName": "RDF - CH - 80 - DEOFLOW ROTATING UNION",
+    "category": "Water Rotary Joints",
+    "categorySlug": "water-rotary-joints",
+    "slug": "rdf-ch-80-this-is-deofolw-rotating-union-19",
+    "description": "A reliable sealing solution engineered for maximum efficiency and durability in industrial applications.",
+    "features": [
+      "Direction: Right Hand & Left Hand Thread"
+    ],
+    "specs": {
+      "Thread": "NPT, BSP, UNF, MM",
+      "Media": "Chilled Water",
+      "Temperature range": "0°C to 80°C",
+      "Pressure": "0 to 5 kg/cm²",
+      "Moc of body": "Forged Cast Steel, SS 304, SS 316",
+      "Rotor": "SS 304, SS 316, Cast Steel",
+      "Bearing": "SKF / FAG, Steel Cage, Rubber Cage",
+      "Rpm": "1000 to 1200",
+      "Face combination": "Carbon, Silicon Carbide, Tungsten Carbide, Ceramic, Stellite, Recralloy",
+      "Siphon elbow": "Available in SS 304 / Cast Steel with screwed or rotating siphon pipe",
+      "Siphon pipe direction": "Right Hand or Left Hand"
+    },
+    "badgeSpecs": [
+      {
+        "label": "Temp",
+        "value": "0°C to 80°C"
+      },
+      {
+        "label": "Press",
+        "value": "0 to 5 kg/cm²"
+      }
+    ],
+    "galleryFiles": [
+      {
+        "file": "chillwatertwo.png",
         "label": "Product Photo",
         "type": "photo"
       }

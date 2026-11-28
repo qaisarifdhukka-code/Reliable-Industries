@@ -49,7 +49,7 @@ export const CONTACT_DEPARTMENTS: ContactDepartment[] = [
     title: 'Technical & Engineering',
     description:
       'Seal selection, CAD drawings, operating limits, and customized troubleshooting.',
-    email: 'tech@reliableseal.com',
+    email: 'info@reliableseal.com',
     phone: '+91- 78880 65557',
     accent: 'cyan',
   },
@@ -61,24 +61,6 @@ export const CONTACT_DEPARTMENTS: ContactDepartment[] = [
     email: 'sales@reliableseal.com',
     phone: '+91- 78880 65558',
     accent: 'yellow',
-  },
-  {
-    id: 'dispatch',
-    title: 'Dispatch & Logistics',
-    description:
-      'Order tracking, air & sea freight logistics, and urgent shutdown shipments.',
-    email: 'dispatch@reliableseal.com',
-    phone: '+91- 78880 65559',
-    accent: 'navy',
-  },
-  {
-    id: 'quality',
-    title: 'Quality & QA Inspection',
-    description:
-      'Material test reports (MTR), API 682 hydro test certificates, and compliance audits.',
-    email: 'quality@reliableseal.com',
-    phone: '+91- 78880 65557',
-    accent: 'cyan',
   },
 ];
 

@@ -4,98 +4,49 @@ import CertificatesCarousel, {
   type CertificateCardData,
 } from '@/components/CertificatesCarousel';
 
-const certificateItems: string[] = [
-  'API Spec Q1 Certified',
-  'ASME U Stamp 115366 BPV',
-  'National Board "NB" Certificate',
-  'ISO 19443 Nuclear Quality',
-  'APIQR ISO 9001:2015',
-  'ISO 29001:2020 Petroleum Systems',
-  'ATEX - 2014/34/EU Directive',
-  'TRCU - 012 / 010 & 032',
-  'PED - CE Pressure Equipment',
-  'ISO 9001:2015 Quality Management',
-  'ISO 14001:2015 Environmental System',
-  'ISO 45001:2018 Health & Safety',
-  'EU 1935/2004 & FDA Compliant',
-  'REACH SVHC & RoHS Compliant',
+const certificateItems: { label: string; href: string }[] = [
+  {
+    label: 'ISO 9001:2015 — QRO Certification (2024–2027)',
+    href: '/certificates/iso-9001-2024-2027.pdf',
+  },
+  {
+    label: 'ISO 9001:2015 — QACS International (Up to 2024)',
+    href: '/certificates/iso-9001-up-to-2024.pdf',
+  },
 ];
 
 const certificateCards: CertificateCardData[] = [
   {
-    id: 'cert-api-q1',
-    category: 'APIQR • API Monogram',
-    title: 'Certificate of Authority',
-    regNumber: 'Registration No. API-682-0412',
-    organizationLabel: 'Awarded to',
-    organization: SITE_CONFIG.brandName,
-    standardCode: 'API Spec Q1 / ISO 9001',
-    description:
-      'Design and manufacture of industrial mechanical seals, cartridge assemblies, and seal auxiliary systems.',
-    sealLabel: 'API Q1',
-    signatoryName: 'R. Sharma',
-    signatoryRole: 'VP Quality Assurance',
-    accentType: 'cyan',
-  },
-  {
-    id: 'cert-asme',
-    category: 'ASME Boiler & Pressure',
-    title: 'Certificate of Authorization',
-    regNumber: 'ASME "U" Stamp No. 115366',
-    organizationLabel: 'Certified Manufacturer',
-    organization: SITE_CONFIG.brandName,
-    standardCode: 'ASME Section VIII, Div. 1',
-    description:
-      'Fabrication and assembly of pressure vessel equipment, thermosyphon vessels, and high-pressure barrier systems.',
-    sealLabel: 'ASME U',
-    signatoryName: 'M. Jenkins',
-    signatoryRole: 'Managing Director',
-    accentType: 'navy',
-  },
-  {
-    id: 'cert-iso-9001',
-    category: 'Quality Management',
+    id: 'cert-iso-9001-qro',
+    category: 'QRO • EGAC • IAF',
     title: 'Certificate of Registration',
-    regNumber: 'Certificate No. ISO-9001-2015-RI',
+    regNumber: 'Certificate No. 3050240618172Q',
+    organizationLabel: 'This is to certify that',
+    organization: SITE_CONFIG.brandName,
+    standardCode: 'ISO 9001:2015',
+    description:
+      'Manufacturer and supplier of mechanical shaft seals, rotary joints and related spares. (2024–2027)',
+    sealLabel: 'QRO ISO',
+    signatoryName: 'QRO Certification LLP',
+    signatoryRole: 'Head of Certification',
+    accentType: 'cyan',
+    pdfUrl: '/certificates/iso-9001-2024-2027.pdf',
+  },
+  {
+    id: 'cert-iso-9001-qacs',
+    category: 'QACS International • IAS • IAF',
+    title: 'Certificate of Registration',
+    regNumber: 'Certificate No. QAIS-Q-RI-05.18.036',
     organizationLabel: 'This certifies that',
     organization: SITE_CONFIG.brandName,
     standardCode: 'ISO 9001:2015',
     description:
-      'Comprehensive Quality Management Systems for precision engineering, custom seal manufacturing, and zero-defect quality control.',
-    sealLabel: 'ISO 9001',
-    signatoryName: 'Dr. H. Mehta',
-    signatoryRole: 'Lead Auditor / Registrar',
-    accentType: 'cyan',
-  },
-  {
-    id: 'cert-atex',
-    category: 'ATEX 2014/34/EU • Ex',
-    title: 'EU-Type Examination',
-    regNumber: 'Notified Body No. 0081 / ATEX',
-    organizationLabel: 'Equipment Compliance',
-    organization: SITE_CONFIG.brandName,
-    standardCode: 'II 2 GD c IIC T4...T1',
-    description:
-      'Explosion-proof mechanical seal design for dangerous and explosive gas / dust environments in petrochemical plants.',
-    sealLabel: 'Ex ATEX',
-    signatoryName: 'A. Dupont',
-    signatoryRole: 'Safety Director',
+      'Manufacturer and supplier of mechanical shaft seals, rotary joints and related spares. EA Code: 18 (Up to 2024).',
+    sealLabel: 'QACS ISO',
+    signatoryName: 'QACS International Pvt. Ltd.',
+    signatoryRole: 'Authorised Signatory',
     accentType: 'navy',
-  },
-  {
-    id: 'cert-ehs',
-    category: 'Environmental & Safety',
-    title: 'Integrated EHS Certificate',
-    regNumber: 'Registration No. EHS-45001-14001',
-    organizationLabel: 'Certified Organization',
-    organization: SITE_CONFIG.brandName,
-    standardCode: 'ISO 14001:2015 & 45001:2018',
-    description:
-      'Implementation of international occupational safety and environmentally sustainable seal manufacturing practices.',
-    sealLabel: 'EHS CERT',
-    signatoryName: 'S. Patel',
-    signatoryRole: 'Head of Compliance',
-    accentType: 'cyan',
+    pdfUrl: '/certificates/iso-9001-up-to-2024.pdf',
   },
 ];
 ---
@@ -110,12 +61,21 @@ const certificateCards: CertificateCardData[] = [
       <ul class="grid grid-cols-1 gap-x-[1.5rem] gap-y-[0.75rem] min-[577px]:grid-cols-2 min-[1025px]:grid-cols-1">
         {
           certificateItems.map((item) => (
-            <li class="flex items-center gap-[0.65rem] text-[0.9rem] font-medium leading-[1.45] text-[#334155]">
-              <span
-                aria-hidden="true"
-                class="h-[6px] w-[6px] shrink-0 rounded-full bg-[#009FE3]"
-              />
-              <span>{item}</span>
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-[0.65rem] text-[0.9rem] font-medium leading-[1.45] text-[#334155] transition-colors duration-200 hover:text-[#009FE3]"
+              >
+                <span
+                  aria-hidden="true"
+                  class="h-[6px] w-[6px] shrink-0 rounded-full bg-[#009FE3]"
+                />
+                <span class="underline decoration-[#cbd5e1] underline-offset-4 hover:decoration-[#009FE3]">
+                  {item.label}
+                </span>
+              </a>
             </li>
           ))
         }

@@ -4,7 +4,11 @@ import { SITE_CONFIG } from '@/config/site';
 import AccreditationBadges from '@/components/AccreditationBadges.astro';
 import DesktopNav from '@/components/DesktopNav';
 import MobileNav from '@/components/MobileNav';
-import { CATALOG_PRODUCTS, getPrimaryImageMeta } from '@/data/catalog';
+import {
+  CATALOG_PRODUCTS,
+  getPrimaryImageMeta,
+  getProductEngineeringCode,
+} from '@/data/catalog';
 import {
   BROCHURE_LINK,
   PRODUCT_SUPER_CATEGORIES,
@@ -27,12 +31,20 @@ const navThumbEntries = await Promise.all(
 );
 const navThumbById = new Map<number | string, string>(navThumbEntries);
 
+const navCodeById = new Map<number | string, string>(
+  CATALOG_PRODUCTS.flatMap((prod) => {
+    const code = getProductEngineeringCode(prod);
+    return code ? ([[prod.id, code] as const]) : [];
+  })
+);
+
 const enrichedSuperCategories = PRODUCT_SUPER_CATEGORIES.map((superCat) => ({
   ...superCat,
   subcategories: superCat.subcategories.map((sub) => ({
     ...sub,
     products: sub.products.map((prod) => ({
       ...prod,
+      name: navCodeById.get(prod.id) ?? prod.name,
       thumbSrc: navThumbById.get(prod.id),
     })),
   })),
@@ -66,22 +78,22 @@ if (pathname.startsWith('/industries')) {
   class="sticky top-0 z-[100] bg-white py-[0.55rem] shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-[padding] duration-300 ease-in-out [&.scrolled]:py-[0.38rem]"
 >
   <div class="site-container flex items-center justify-between">
-    <a href="/" class="flex items-center" aria-label={`${SITE_CONFIG.brandName} Home`}>
-      <div>
-        <AccreditationBadges class="mb-[4px]" />
-        <div class="flex items-baseline gap-[7px]">
-          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.35rem]">
+    <a href="/" class="flex min-w-0 flex-1 flex-row items-center gap-[0.35rem] min-[900px]:flex-initial min-[900px]:gap-[1rem]" aria-label={`${SITE_CONFIG.brandName} Home`}>
+      <div class="shrink-0">
+        <div class="flex items-baseline gap-[5px] min-[481px]:gap-[7px]">
+          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.1rem] max-[480px]:text-[0.95rem]">
             {SITE_CONFIG.brandFirst}
           </span>
-          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.35rem]">
+          <span class="font-serif text-[1.55rem] font-bold italic leading-[1] text-[#003B6D] max-[880px]:text-[1.1rem] max-[480px]:text-[0.95rem]">
             {SITE_CONFIG.brandSecond}
           </span>
         </div>
-        <span class="mt-[3px] block border-t border-[#003B6D] pt-[3px] text-left font-serif text-[0.58rem] font-bold leading-[1.2] text-[#003B6D] max-[880px]:text-[0.52rem]">
+        <span class="mt-[3px] block border-t border-[#003B6D] pt-[3px] text-left font-serif text-[0.58rem] font-bold leading-[1.2] text-[#003B6D] max-[880px]:text-[0.44rem] max-[480px]:text-[0.38rem]">
           <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline1}</span>
           <span class="block whitespace-nowrap">{SITE_CONFIG.mfgSubline2}</span>
         </span>
       </div>
+      <AccreditationBadges class="border-l border-[#e2e8f0] pl-[0.35rem] min-[900px]:pl-[1rem]" />
     </a>
 
     <DesktopNav
@@ -97,7 +109,7 @@ if (pathname.startsWith('/industries')) {
     <MobileNav
       client:media="(max-width: 768px)"
       menus={TOP_NAV_MENUS}
-      superCategories={PRODUCT_SUPER_CATEGORIES}
+      superCategories={enrichedSuperCategories}
       searchProducts={SEARCHABLE_PRODUCTS}
       utilityLinks={UTILITY_LINKS}
       brochureHref={BROCHURE_LINK.href}

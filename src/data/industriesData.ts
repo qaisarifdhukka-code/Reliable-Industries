@@ -8,6 +8,12 @@ import energyImg from '@/assets/images/industry_energy_1790083113983.jpg';
 import industrialNewImg from '@/assets/images/hero_industrial_new.jpg';
 import cadImg from '@/assets/images/engineering_cad.jpg';
 import rotaryHeroImg from '@/assets/images/hero_rotary_joint_product.jpg';
+import industryPharmaImg from '@/assets/images/industry_pharma.jpg';
+import industryPulpPaperImg from '@/assets/images/industry_pulp_paper.jpg';
+import industryFoodBeverageImg from '@/assets/images/industry_food_beverage.jpg';
+import industryWaterSystemsImg from '@/assets/images/industry_water_systems.jpg';
+import industryRefrigerationImg from '@/assets/images/industry_refrigeration.jpg';
+import industryOilGasImg from '@/assets/images/industry_oil_gas.jpg';
 
 export interface RecommendedProductRef {
   name: string;
@@ -55,9 +61,21 @@ export function resolveIndustryCategoryHref(categorySlug: string): string {
   return CATEGORY_ROUTE_MAP[categorySlug] ?? `/products/${categorySlug}`;
 }
 
+const IMAGE_BY_SLUG: Record<string, ImageMetadata> = {
+  'oil-and-gas': industryOilGasImg,
+  'oil-gas': industryOilGasImg,
+  'pharmaceutical': industryPharmaImg,
+  'pulp-and-paper': industryPulpPaperImg,
+  'pulp-paper': industryPulpPaperImg,
+  'food-and-beverage': industryFoodBeverageImg,
+  'food-beverage': industryFoodBeverageImg,
+  'water-systems': industryWaterSystemsImg,
+  'refrigeration-compressors': industryRefrigerationImg,
+};
+
 export const INDUSTRIES_LIST: IndustryWithAsset[] = (
   industriesRaw as unknown as IndustryRecord[]
 ).map((item) => ({
   ...item,
-  imageMeta: IMAGE_BY_REF_PATH[item.image] ?? industrialImg,
+  imageMeta: IMAGE_BY_SLUG[item.slug] ?? IMAGE_BY_REF_PATH[item.image] ?? industrialImg,
 }));

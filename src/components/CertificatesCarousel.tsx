@@ -14,6 +14,7 @@ export interface CertificateCardData {
   signatoryName: string;
   signatoryRole: string;
   accentType: 'navy' | 'cyan';
+  pdfUrl?: string;
 }
 
 interface CertificatesCarouselProps {
@@ -110,10 +111,32 @@ export default function CertificatesCarousel({
                 if (!isActive) setActiveIndex(index);
               }}
               aria-hidden={!isActive}
-              className={`absolute flex h-[385px] w-[calc(100%-3rem)] max-w-[300px] flex-col rounded-[2px] border border-[#e2e8f0] bg-white p-[1.5rem] text-center transition-all duration-300 ease-in-out min-[577px]:h-[395px] min-[577px]:w-[310px] min-[577px]:max-w-none ${
+              className={`absolute flex h-[385px] w-[calc(100%-3rem)] max-w-[300px] flex-col rounded-[2px] border border-[#e2e8f0] bg-white ${cert.pdfUrl ? 'p-2' : 'p-[1.5rem]'} text-center transition-all duration-300 ease-in-out min-[577px]:h-[395px] min-[577px]:w-[310px] min-[577px]:max-w-none ${
                 isCyan ? 'border-t-4 border-t-[#009FE3]' : 'border-t-4 border-t-[#003B6D]'
               } ${!isActive ? 'cursor-pointer' : ''} ${getCardStyleClass(offset)}`}
             >
+              {cert.pdfUrl ? (
+                <a
+                  href={cert.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!isActive) {
+                      e.preventDefault();
+                    }
+                  }}
+                  className="relative flex h-full w-full flex-col overflow-hidden bg-[#f8fafc]"
+                  title={`Open ${cert.title}`}
+                >
+                  <iframe
+                    src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    title={cert.title}
+                    className="pointer-events-none h-full w-full border-0"
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <>
               <div className="mb-[0.75rem] flex justify-center">
                 <span
                   className={`inline-block rounded-[2px] px-[0.65rem] py-[0.2rem] text-[0.68rem] font-bold uppercase tracking-[1px] ${
@@ -161,6 +184,8 @@ export default function CertificatesCarousel({
                   </span>
                 </div>
               </div>
+                </>
+              )}
             </article>
           );
         })}
